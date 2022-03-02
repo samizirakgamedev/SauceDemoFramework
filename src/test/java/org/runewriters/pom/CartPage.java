@@ -11,7 +11,7 @@ public class CartPage {
     By bikeLightLabel = new By.ById("Sauce Labs Bike Light");
     By boltShirtLabel = new By.ById("Sauce Labs Bolt T-Shirt");
     By fleeceJacketLabel = new By.ById("Sauce Labs Fleece Jacket");
-    By onesieLabel = new By.ById("Sauce Labs Onsie");
+    By onesieLabel = new By.ById("Sauce Labs Onesie");
     By redShirtLabel = new By.ById("Test.allTheThings() T-Shirt (Red)");
     By continueShopping = new By.ById("Continue Shopping");
     By checkout = new By.ById("Checkout");
