@@ -13,7 +13,6 @@ public abstract  class WebDriverManager {
             driver.quit();
             driver = null;
         }
-
     }
     public WebDriver getDriver() {
         if (null == driver) {
