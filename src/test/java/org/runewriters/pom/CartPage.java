@@ -10,8 +10,8 @@ public class CartPage extends Page {
 
     private By cartItems = new By.ByClassName("inventory_item_name");
     private By cartItemPrice = new By.ByClassName("inventory_item_price");
-    private By continueShopping = new By.ById("Continue Shopping");
-    private By checkout = new By.ById("Checkout");
+    private By continueShopping = new By.ById("continue-shopping");
+    private By checkout = new By.ById("checkout");
     private By remove = new By.ById("remove-sauce-labs-backpack");
 
     public CartPage(WebDriver driver){

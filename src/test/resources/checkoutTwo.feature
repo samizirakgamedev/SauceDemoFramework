@@ -9,7 +9,7 @@ Feature: Able to verify personal details and navigate to different pages on the 
 
   Scenario: Getting to the Inventory page via cancel button from the Checkout Two page
     When I click on cancel button
-    Then I will go to the inventory page
+    Then I will go to the Inventory page
 
   Scenario: Getting to the Your Cart page via cart icon from the Checkout Two page
     When I click on Cart icon
