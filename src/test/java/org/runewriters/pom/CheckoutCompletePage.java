@@ -3,12 +3,12 @@ package org.runewriters.pom;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class CheckoutCompletePage {
+public class CheckoutCompletePage extends Page {
 
     private WebDriver webDriver;
-    By completeHeader = new By.ByClassName("complete-header");
-    By ponyExpressImage = new By.ByClassName("pony_express");
-    By backHomeButton = new By.ByClassName("btn btn_primary btn_small");
+    private By completeHeader = new By.ByClassName("complete-header");
+    private By ponyExpressImage = new By.ByClassName("pony_express");
+    private By backHomeButton = new By.ByClassName("btn btn_primary btn_small");
 
     public CheckoutCompletePage(WebDriver webDriver) {
         this.webDriver = webDriver;
@@ -20,6 +20,7 @@ public class CheckoutCompletePage {
 
     public boolean isCompletedImagePresent(){
         return webDriver.findElement(ponyExpressImage).getAttribute("alt").equals("Pony Express");
+
     }
 
     public void clickBackHomeButton(){
