@@ -25,9 +25,9 @@ public class CartPage {
         List<WebElement> cartItemNames = driver.findElements(cartItems);
         cartItemNames.get(index).click();
     }
-    public WebElement getItemPriceAtIndex(int index){
+    public String getItemPriceAtIndex(int index){
         List<WebElement> cartItemPrices = driver.findElements(cartItemPrice);
-        return cartItemPrices.get(index);
+        return cartItemPrices.get(index).getText();
     }
 
     public void clickRemoveItemAtIndex(int index){
