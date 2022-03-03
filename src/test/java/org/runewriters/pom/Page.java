@@ -18,6 +18,14 @@ public abstract class Page {
     private By facebookIcon = new By.ByLinkText("Facebook");
     private By linkedinIcon = new By.ByLinkText("LinkedIn");
 
+    public Page(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    public WebDriver getDriver() {
+        return driver;
+    }
+
     public boolean isLogoPresent() {
         return driver.findElement(appLogo).getAttribute("class").equals("app_logo");
     }
