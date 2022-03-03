@@ -5,7 +5,7 @@ Feature: Able to verify personal details and navigate to different pages on the 
 
   Scenario: Getting to the Checkout Complete page from the Checkout Two page
     When I click on the finish button
-    Then I will go to the checkout continue page
+    Then I will go to the checkout complete page
 
   Scenario: Getting to the Inventory page via cancel button from the Checkout Two page
     When I click on cancel button
