@@ -27,6 +27,8 @@ public class CartStepDefs {
 
     }
 
+
+
     @When("I click on the image or title of the product")
     public void clickOnTheImageOrTitleOfProduct() {
        // Assertions.assertEquals("https://www.saucedemo.com/cart.html", CartPage.getURL());
@@ -37,6 +39,7 @@ public class CartStepDefs {
        // Assertions.assertTrue();
     }
 
+    
     @When("I click on 'add to cart'")
     public void clickOnAddToCart() {
         // Assertions.assertEquals("https://www.saucedemo.com/cart.html", CartPage.getURL());
@@ -77,7 +80,19 @@ public class CartStepDefs {
         // Assertions.assertTrue();
     }
 
-   //Twitter
+    @When("An item is displayed inside the cart")
+    public void itemDisplayedInsideTheCart3() {
+        // Assertions.assertEquals("https://www.saucedemo.com/cart.html", Cartpage.getURL());
+    }
+
+    @Then("I will see the price of the product")
+    public void iWillSeeThePriceOfTheProduct() {
+        // Assertions.assertTrue();
+    }
+
+
+
+    //Twitter
     @When("When I click on the Twitter icon")
     public void clickOnTheTwitterIcon() {
         // Assertions.assertEquals("https://www.saucedemo.com/cart.html", Cartpage.getURL());

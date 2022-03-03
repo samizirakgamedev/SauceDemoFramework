@@ -23,6 +23,10 @@ Feature: Navigating through Cart page
     When An item is displayed inside the cart
     Then I will have an option to remove that item from the cart
 
+  Scenario: An item is displayed in the cart
+    When An item is displayed inside the cart
+    Then I will see the price of the product
+
   Scenario: Getting to the Twitter page from the Cart page
     When I click on the Twitter icon
     Then I will go to the Twitter page
