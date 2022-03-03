@@ -6,11 +6,10 @@ import org.openqa.selenium.WebDriver;
 public class InventoryItemPage extends Page {
 
     private By itemImage = new By.ByClassName("inventory_details_img");
-    private By itemName = new By.ByClassName("inventory_details_name large_size");
-    private By itemDescription = new By.ByClassName("inventory_details_desc large_size");
+    private By itemName = new By.ByClassName("inventory_details_name");
+    private By itemDescription = new By.ByClassName("inventory_details_desc");
     private By itemPrice = new By.ByClassName("inventory_details_price");
-    private By addToCartOrRemoveButton = new By.ByClassName("btn btn_secondary btn_small btn_inventory");
-    private By backToProductsButton = new By.ByClassName("btn btn_secondary back btn_large inventory_details_back_button");
+    private By backToProductsButton = new By.ById("back-to-products");
 
     public InventoryItemPage(WebDriver webDriver) {
         super(webDriver);
@@ -32,8 +31,14 @@ public class InventoryItemPage extends Page {
         return this.getDriver().findElement(itemPrice).getText();
     }
 
-    public void clickAddToCartOrRemoveButton(){
-        this.getDriver().findElement(addToCartOrRemoveButton).click();
+    public void clickAddToCartButton(){
+        By addToCartButton = new By.ById("add-to-cart-sauce-labs-backpack");
+        this.getDriver().findElement(addToCartButton).click();
+    }
+
+    public void clickRemoveItemButton(){
+        By removeButton = new By.ById("add-to-cart-sauce-labs-backpack");
+        this.getDriver().findElement(removeButton).click();
     }
 
     public void clickBackToProductsButton(){

@@ -9,7 +9,7 @@ public class InventoryPage extends Page {
     private By itemNames = new By.ByClassName("inventory_item_name");
     private By itemPrices = new By.ByClassName("inventory_item_price");
     private By itemDescription = new By.ByClassName("inventory_item_desc");
-    private By addToCartOrRemoveButtons = new By.ByName("btn btn_primary btn_small btn_inventory");
+    private By addToCartOrRemoveButtons = new By.ByClassName("btn");
     private By filterButton = new By.ByClassName("product_sort_container");
     private By filterOptions = new By.ByTagName("option");
 
