@@ -39,3 +39,5 @@ Feature: Navigating through Cart page
     When I click on the Linkedin icon
     Then I will go to the Linkedin page
 
+## When I click on the product name (link)
+  ##It will take me to the product description page with the price

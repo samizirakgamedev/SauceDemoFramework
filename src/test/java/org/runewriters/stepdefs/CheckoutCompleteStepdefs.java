@@ -34,6 +34,7 @@ public class CheckoutCompleteStepdefs {
 
     @When("I click on back home button")
     public void iClickOnBackHomeButton() {
+
         checkoutCompletePage.clickBackHomeButton();
     }
 

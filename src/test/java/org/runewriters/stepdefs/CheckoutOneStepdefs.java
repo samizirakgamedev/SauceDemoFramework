@@ -41,21 +41,25 @@ public class CheckoutOneStepdefs {
 
     @When("I enter my first name")
     public void iEnterMyFirstName() {
+
         checkoutOnePage.enterFirstNameInTextBox("Suyash");
     }
 
     @And("I enter my last name")
     public void iEnterMyLastName() {
+
         checkoutOnePage.enterLastNameInTextBox("Srivastava");
     }
 
     @And("I enter my postal code")
     public void iEnterMyPostalCode() {
+
         checkoutOnePage.enterZipCodeInTextBox("E14 NS");
     }
 
     @And("I click on the Continue button")
     public void iClickOnTheContinueButton() {
+
         checkoutOnePage.clickContinueButton();
     }
 
@@ -66,6 +70,7 @@ public class CheckoutOneStepdefs {
 
     @When("I click on Cancel button")
     public void iClickOnCancelButton() {
+
         checkoutOnePage.clickCancelButton();
     }
 
