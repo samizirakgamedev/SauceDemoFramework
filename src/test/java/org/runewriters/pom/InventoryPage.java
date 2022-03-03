@@ -15,6 +15,7 @@ public class InventoryPage extends Page {
 
     public InventoryPage(WebDriver webDriver) {
         super(webDriver);
+        this.getDriver().get("https://www.saucedemo.com/inventory.html");
     }
 
     public void clickItemImageAtIndex(int index){
