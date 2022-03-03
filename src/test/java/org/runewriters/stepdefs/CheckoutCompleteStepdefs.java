@@ -25,8 +25,6 @@ public class CheckoutCompleteStepdefs {
     public void setup(){
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
         webDriver = new ChromeDriver();
-        //loginPage = new LoginPage(webDriver);
-        //more lines to be added (to log the user in), waiting for the POM classes to get completed
         webDriver.get("https://www.saucedemo.com");
         System.out.println("setup");
     }
@@ -57,19 +55,57 @@ public class CheckoutCompleteStepdefs {
         checkoutCompletePage.clickBackHomeButton();
     }
 
-//    @Then("I will go to the Inventory Page")
-//    public void iWillGoToTheInventoryPage() {
-//        Assertions.assertEquals("", inventory.getCurrentURL());
-//    }
+    @Then("I will go to the Inventory Page")
+    public void iWillGoToTheInventoryPage() {
+        //inventory = new InventoryPage(webDriver);
+        Assertions.assertEquals("https://www.saucedemo.com/inventory.html", inventory.getCurrentURL());
+    }
+
+    @When("I click on Cart Icon")
+    public void iClickOnCartIcon() {
+        checkoutCompletePage = new CheckoutCompletePage(webDriver);
+        checkoutCompletePage.clickCartIcon();
+    }
+    @Then("I will go to the Your Cart Page")
+    public void iWillGoToTheYourCartPage() {
+
+        Assertions.assertEquals("https://www.saucedemo.com/cart.html", cartPage.getCurrentURL());
+    }
+    @When("I click on Twitter Icon")
+    public void iClickOnTwitterIcon() {
+        checkoutCompletePage = new CheckoutCompletePage(webDriver);
+        checkoutCompletePage.clickTwitterIcon();
+    }
+    @Then("I will go to the Twitter Page")
+    public void iWillGoToTheTwitterPage() {
+        Assertions.assertEquals("https://twitter.com/saucelabs", checkoutCompletePage.getCurrentURL());
+    }
+
+    @When("I click on Facebook Icon")
+    public void iClickOnFacebookIcon() {
+        checkoutCompletePage = new CheckoutCompletePage(webDriver);
+        checkoutCompletePage.clickFacebookIcon();
+
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Then("I will go to the Facebook Page")
+    public void iWillGoToTheFacebookPage() {
+        Assertions.assertEquals("https://www.facebook.com/saucelabs", checkoutCompletePage.getCurrentURL());
+    }
 
     @And("The cart will be empty")
     public void theCartWillBeEmpty() {
         //Assertions.assertEquals(cartPage.isCartEmpty());
     }
 
-    @After
-    public void tearDown(){
-        webDriver.quit();
-        System.out.println("tearDown");
-    }
+//    @After
+//    public void tearDown(){
+//        webDriver.quit();
+//        System.out.println("tearDown");
+//    }
 }

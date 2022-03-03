@@ -56,6 +56,7 @@ public class CheckoutTwoStepdefs {
 
     @Then("I will go to the checkout complete page")
     public void iWillGoToTheCheckoutCompletePage() {
+        checkoutCompletePage = new CheckoutCompletePage(webDriver);
         Assertions.assertEquals("https://www.saucedemo.com/checkout-complete.html", checkoutCompletePage.getCurrentURL());
     }
 
@@ -63,11 +64,6 @@ public class CheckoutTwoStepdefs {
     public void iClickOnCancelButton() {
         checkoutTwoPage.clickCancelButton();
     }
-
-//    @Then("I will go to the inventory page")
-//    public void iWillGoToTheInventoryPage() {
-//        Assertions.assertEquals("https://www.saucedemo.com/inventory.html", inventory.getCurrentURL());
-//    }
 
     @After
     public void tearDown(){

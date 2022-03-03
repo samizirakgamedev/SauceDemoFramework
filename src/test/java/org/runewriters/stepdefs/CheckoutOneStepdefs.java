@@ -83,31 +83,32 @@ public class CheckoutOneStepdefs {
 
     @When("I click on Cart icon")
     public void iClickOnCartIcon() {
-       page.clickCartIcon();
+       checkoutOnePage.clickCartIcon();
     }
 
     @Then("I will go to the Inventory page")
     public void iWillGoToTheInventoryPage() {
+        //inventory = new InventoryPage(webDriver);
         Assertions.assertEquals("https://www.saucedemo.com/inventory.html", inventory.getCurrentURL());
     }
 
     @When("I click on Twitter icon")
     public void iClickOnTwitterIcon() {
-        page.clickTwitterIcon();
+        checkoutOnePage.clickTwitterIcon();
     }
 
     @Then("I will go to the Twitter page")
     public void iWillGoToTheTwitterPage() {
-        Assertions.assertEquals("https://twitter.com/saucelabs", page.getCurrentURL());
+        Assertions.assertEquals("https://twitter.com/saucelabs", checkoutOnePage.getCurrentURL());
     }
 
     @When("I click on Facebook icon")
     public void iClickOnFacebookIcon() {
-        page.clickFacebookIcon();    }
+        checkoutOnePage.clickFacebookIcon();    }
 
     @Then("I will go to the Facebook page")
     public void iWillGoToTheFacebookPage() {
-        Assertions.assertEquals("https://www.facebook.com/saucelabs", page.getCurrentURL());
+        Assertions.assertEquals("https://www.facebook.com/saucelabs", checkoutOnePage.getCurrentURL());
     }
 
     @When("I click on Linkedin icon")
