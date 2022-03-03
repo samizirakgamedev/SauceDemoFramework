@@ -25,4 +25,8 @@ public abstract class Page {
     void isFooterTextPresent(){
 
     }
+
+    String getCurrentURL(){
+        return "";
+    }
 }
