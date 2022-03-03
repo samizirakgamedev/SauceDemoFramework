@@ -16,8 +16,8 @@ public class InventoryItemPage extends Page {
         super(webDriver);
     }
 
-    public void getItemName(){
-        this.getDriver().findElement(itemName).getText();
+    public String getItemName(){
+        return this.getDriver().findElement(itemName).getText();
     }
 
     public String getItemImageSource(){
