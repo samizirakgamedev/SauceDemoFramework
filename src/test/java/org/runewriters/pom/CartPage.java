@@ -2,60 +2,45 @@ package org.runewriters.pom;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 public class CartPage {
 
     private WebDriver driver;
 
-    By backpackLabel = new By.ById("Sauce Labs Backpack");
-    By bikeLightLabel = new By.ById("Sauce Labs Bike Light");
-    By boltShirtLabel = new By.ById("Sauce Labs Bolt T-Shirt");
-    By fleeceJacketLabel = new By.ById("Sauce Labs Fleece Jacket");
-    By onesieLabel = new By.ById("Sauce Labs Onesie");
-    By redShirtLabel = new By.ById("Test.allTheThings() T-Shirt (Red)");
+    By cartItems = new By.ByClassName("inventory_item_name");
+    By cartItemPrice = new By.ByClassName("inventory_item_price");
     By continueShopping = new By.ById("Continue Shopping");
     By checkout = new By.ById("Checkout");
-    By remove = new By.ById("Remove");
+    By remove = new By.ByClassName("btn btn_secondary btn_small cart_button");
 
 
     public CartPage(WebDriver driver){
         this.driver = driver;
     }
 
-    public void clickBackPack(){
-        driver.findElement(backpackLabel).click();
+    public void clickItemAtIndex(int index){
+        List<WebElement> cartItemNames = driver.findElements(cartItems);
+        cartItemNames.get(index).click();
+    }
+    public String getItemPriceAtIndex(int index){
+        List<WebElement> cartItemPrices = driver.findElements(cartItemPrice);
+        return cartItemPrices.get(index).getText();
     }
 
-    public void clickBikeLight(){
-        driver.findElement(bikeLightLabel).click();
+    public void clickRemoveItemAtIndex(int index){
+        List<WebElement> removeButtons = driver.findElements(remove);
+        removeButtons.get(index).click();
     }
 
-    public void clickBoltShirt(){
-        driver.findElement(boltShirtLabel).click();
-    }
-
-    public void clickFleeceJacket(){
-        driver.findElement(fleeceJacketLabel).click();
-    }
-
-    public void clickOnesie(){
-        driver.findElement(onesieLabel).click();
-    }
-
-    public void clickRedShirt(){
-        driver.findElement(redShirtLabel).click();
-    }
-
-    public void clickContinueShopping(){
+    public void clickContinueShoppingButton(){
         driver.findElement(continueShopping).click();
     }
 
-    public void clickCheckout(){
+    public void clickCheckoutButton(){
         driver.findElement(checkout).click();
-    }
-
-    public void clickRemove(){
-        driver.findElement(remove).click();
     }
 
 
