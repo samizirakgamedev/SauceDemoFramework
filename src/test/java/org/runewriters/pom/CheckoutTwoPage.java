@@ -26,6 +26,7 @@ public class CheckoutTwoPage extends Page {
 
     public CheckoutTwoPage(WebDriver webDriver) {
         super(webDriver);
+        this.getDriver().get("https://www.saucedemo.com/checkout-step-two.html");
     }
 
     public boolean isShoppingCartEmpty(){

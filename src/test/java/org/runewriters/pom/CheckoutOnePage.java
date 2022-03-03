@@ -13,6 +13,7 @@ public class CheckoutOnePage extends Page{
 
     public CheckoutOnePage(WebDriver webDriver) {
         super(webDriver);
+        this.getDriver().get("https://www.saucedemo.com/checkout-step-one.html");
     }
 
     public void enterFirstNameInTextBox(String firstName){
