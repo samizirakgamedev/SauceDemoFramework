@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 
 public class InventoryPage extends Page {
 
-    private WebDriver webDriver;
     private By itemImages = new By.ByClassName("inventory_item_img");
     private By itemNames = new By.ByClassName("inventory_item_name");
     private By itemPrices = new By.ByClassName("inventory_item_price");
@@ -15,54 +14,54 @@ public class InventoryPage extends Page {
     private By filterOptions = new By.ByTagName("option");
 
     public InventoryPage(WebDriver webDriver) {
-        this.webDriver = webDriver;
+        super(webDriver);
     }
 
     public void clickItemImageAtIndex(int index){
-        webDriver.findElements(itemImages).get(index).click();
+        this.getDriver().findElements(itemImages).get(index).click();
     }
 
     public String getItemImageSourceAtIndex(int index){
-        return webDriver.findElements(itemImages).get(index).getAttribute("source");
+        return this.getDriver().findElements(itemImages).get(index).getAttribute("source");
     }
 
     public void clickItemNameAtIndex(int index){
-        webDriver.findElements(itemNames).get(index).click();
+        this.getDriver().findElements(itemNames).get(index).click();
     }
 
     public String getItemNameAtIndex(int index){
-        return webDriver.findElements(itemNames).get(index).getText();
+        return this.getDriver().findElements(itemNames).get(index).getText();
     }
 
     public String getPriceAtIndex(int index){
-        return webDriver.findElements(itemPrices).get(index).getText();
+        return this.getDriver().findElements(itemPrices).get(index).getText();
     }
 
     public String getItemDescriptionAtIndex(int index){
-        return webDriver.findElements(itemDescription).get(index).getText();
+        return this.getDriver().findElements(itemDescription).get(index).getText();
     }
 
     public void clickAddToCartOrRemoveButtonAtIndex(int index){
-        webDriver.findElements(addToCartOrRemoveButtons).get(index).click();
+        this.getDriver().findElements(addToCartOrRemoveButtons).get(index).click();
     }
 
     public void filterPageByNameAToZ(){
-        webDriver.findElement(filterButton).click();
-        webDriver.findElements(filterOptions).get(0).click();
+        this.getDriver().findElement(filterButton).click();
+        this.getDriver().findElements(filterOptions).get(0).click();
     }
 
     public void filterPageByNameZToA(){
-        webDriver.findElement(filterButton).click();
-        webDriver.findElements(filterOptions).get(1).click();
+        this.getDriver().findElement(filterButton).click();
+        this.getDriver().findElements(filterOptions).get(1).click();
     }
 
     public void filterPageByPrizeLowToHigh(){
-        webDriver.findElement(filterButton).click();
-        webDriver.findElements(filterOptions).get(2).click();
+        this.getDriver().findElement(filterButton).click();
+        this.getDriver().findElements(filterOptions).get(2).click();
     }
 
     public void filterPageByPriceHighToLow(){
-        webDriver.findElement(filterButton).click();
-        webDriver.findElements(filterOptions).get(3).click();
+        this.getDriver().findElement(filterButton).click();
+        this.getDriver().findElements(filterOptions).get(3).click();
     }
 }

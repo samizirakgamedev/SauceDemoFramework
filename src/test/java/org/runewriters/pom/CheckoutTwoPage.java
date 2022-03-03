@@ -9,7 +9,6 @@ import java.util.List;
 
 public class CheckoutTwoPage extends Page {
 
-    private WebDriver webDriver;
     private By cartBadgeQuantity = new By.ByClassName("shopping_cart_badge");
     private By quantityLabel = new By.ByClassName("cart_quantity_label");
     private By description = new By.ByClassName("cart_desc_label");
@@ -26,21 +25,21 @@ public class CheckoutTwoPage extends Page {
     private By finishButton = new By.ById("finish");
 
     public CheckoutTwoPage(WebDriver webDriver) {
-        this.webDriver = webDriver;
+        super(webDriver);
     }
 
     public boolean isShoppingCartEmpty(){
-        List<WebElement> itemsInCart = webDriver.findElements(cartItem);
+        List<WebElement> itemsInCart = this.getDriver().findElements(cartItem);
         return itemsInCart.size() == 0;
     }
 
     public boolean isShoppingCartBadgePresentAndCorrect(){
-        List<WebElement> itemsInCart = webDriver.findElements(cartItem);
-        return itemsInCart.size() == Integer.parseInt(webDriver.findElement(cartBadgeQuantity).getText());
+        List<WebElement> itemsInCart = this.getDriver().findElements(cartItem);
+        return itemsInCart.size() == Integer.parseInt(this.getDriver().findElement(cartBadgeQuantity).getText());
     }
 
     public boolean isItemQuantitiesCorrect(){
-        List<WebElement> itemsInCart = webDriver.findElements(cartQuantity);
+        List<WebElement> itemsInCart = this.getDriver().findElements(cartQuantity);
         for (WebElement webElement : itemsInCart){
             if (!webElement.getText().equals("1"))
                 return false;
@@ -49,17 +48,17 @@ public class CheckoutTwoPage extends Page {
     }
 
     public boolean isQuantityLabelPresent(){
-        return webDriver.findElement(quantityLabel).getText().equals("QTY");
+        return this.getDriver().findElement(quantityLabel).getText().equals("QTY");
     }
 
     public boolean isDescriptionLabelPresent(){
-        return webDriver.findElement(description).getText().equals("DESCRIPTION");
+        return this.getDriver().findElement(description).getText().equals("DESCRIPTION");
     }
 
     public List<String> getItemNamesInCart(){
         List<String> itemNamesResult = new ArrayList<>();
 
-        List<WebElement> itemNamesInCart = webDriver.findElements(itemName);
+        List<WebElement> itemNamesInCart = this.getDriver().findElements(itemName);
         for (WebElement webElement : itemNamesInCart){
             itemNamesResult.add(webElement.getText());
         }
@@ -70,7 +69,7 @@ public class CheckoutTwoPage extends Page {
     public List<String> getItemDescriptionsInCart(){
         List<String> itemDescriptionResult = new ArrayList<>();
 
-        List<WebElement> itemDescriptionsInCart = webDriver.findElements(itemDescription);
+        List<WebElement> itemDescriptionsInCart = this.getDriver().findElements(itemDescription);
         for (WebElement webElement : itemDescriptionsInCart){
             itemDescriptionResult.add(webElement.getText());
         }
@@ -81,7 +80,7 @@ public class CheckoutTwoPage extends Page {
     public List<String> getItemPricesInCart(){
         List<String> itemPricesResult = new ArrayList<>();
 
-        List<WebElement> itemPricesInCart = webDriver.findElements(itemPrice);
+        List<WebElement> itemPricesInCart = this.getDriver().findElements(itemPrice);
         for (WebElement webElement : itemPricesInCart){
             itemPricesResult.add(webElement.getText());
         }
@@ -90,32 +89,32 @@ public class CheckoutTwoPage extends Page {
     }
 
     public String getPaymentInformation(){
-        List<WebElement> paymentInformationList = webDriver.findElements(paymentInformation);
+        List<WebElement> paymentInformationList = this.getDriver().findElements(paymentInformation);
         return paymentInformationList.get(0).getText();
     }
 
     public String getShippingInformation(){
-        List<WebElement> paymentInformationList = webDriver.findElements(paymentInformation);
+        List<WebElement> paymentInformationList = this.getDriver().findElements(paymentInformation);
         return paymentInformationList.get(1).getText();
     }
 
     public String getSubtotalLabelAndPrice(){
-        return webDriver.findElement(subTotalLabel).getText();
+        return this.getDriver().findElement(subTotalLabel).getText();
     }
 
     public String getTaxLabelAndPrice(){
-        return webDriver.findElement(taxTotalLabel).getText();
+        return this.getDriver().findElement(taxTotalLabel).getText();
     }
 
     public String getTotalLabelAndPrice(){
-        return webDriver.findElement(totalPriceLabel).getText();
+        return this.getDriver().findElement(totalPriceLabel).getText();
     }
 
     public void clickCancelButton(){
-        webDriver.findElement(cancelButton).click();
+        this.getDriver().findElement(cancelButton).click();
     }
 
     public void clickFinishButton(){
-        webDriver.findElement(finishButton).click();
+        this.getDriver().findElement(finishButton).click();
     }
 }
