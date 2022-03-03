@@ -48,9 +48,24 @@ public class WebDriverTest {
         driverManager.quitDriver();
     }
 
+    public static void operaTest(){
+        WebDriverManager driverManager;
+        WebDriver driver;
+        String desiredPage = "https://www.google.com/";
+
+        driverManager = WebDriverFactory.getManager(WebDriverType.OPERA);
+        driver = driverManager.getDriver();
+        driver.get(desiredPage);
+
+        if (driver.getCurrentUrl().equals(desiredPage))
+            System.out.println(">>> Opera Driver Functioning <<<");
+        driverManager.quitDriver();
+    }
+
     public static void main(String[] args) {
-        chromeTest();
-        firefoxTest();
-        ieTest();
+        operaTest();
+//        chromeTest();
+//        firefoxTest();
+//        ieTest();
     }
 }
