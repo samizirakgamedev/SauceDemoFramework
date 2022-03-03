@@ -14,6 +14,7 @@ public class IEWebDriver extends WebDriverManager {
     protected void startService() {
         if (null == internetExplorerDriverService) {
             try {
+                System.setProperty("webdriver.ie.driver", "src/test/resources/IEDriverServer.exe");
                 internetExplorerDriverService = new InternetExplorerDriverService.Builder().
                         usingDriverExecutable(new File("src/test/resources/IEDriverServer.exe"))
                         .usingAnyFreePort()
@@ -34,7 +35,7 @@ public class IEWebDriver extends WebDriverManager {
     @Override
     protected void createDriver() {
         InternetExplorerOptions options = new InternetExplorerOptions();
-        //options.addCommandSwitches("headless");
+        options.addCommandSwitches("headless");
         driver = new InternetExplorerDriver(internetExplorerDriverService,options);
     }
 }

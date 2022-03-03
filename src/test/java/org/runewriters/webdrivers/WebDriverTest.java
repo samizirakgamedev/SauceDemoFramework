@@ -14,8 +14,9 @@ public class WebDriverTest {
         driverManager = WebDriverFactory.getManager(WebDriverType.CHROME);
         driver = driverManager.getDriver();
         driver.get(desiredPage);
+
         if (driver.getCurrentUrl().equals(desiredPage))
-            System.out.println("Chrome Driver Functioning");
+            System.out.println(">>> Chrome Driver Functioning <<<");
         driverManager.quitDriver();
     }
 
@@ -27,13 +28,29 @@ public class WebDriverTest {
         driverManager = WebDriverFactory.getManager(WebDriverType.FIREFOX);
         driver = driverManager.getDriver();
         driver.get(desiredPage);
+
         if (driver.getCurrentUrl().equals(desiredPage))
-            System.out.println("FireFox Driver Functioning");
+            System.out.println(">>> Firefox Driver Functioning <<<");
+        driverManager.quitDriver();
+    }
+
+    public static void ieTest(){
+        WebDriverManager driverManager;
+        WebDriver driver;
+        String desiredPage = "https://www.google.com/";
+
+        driverManager = WebDriverFactory.getManager(WebDriverType.IE);
+        driver = driverManager.getDriver();
+        driver.get(desiredPage);
+
+        if (driver.getCurrentUrl().equals(desiredPage))
+            System.out.println(">>> IE Driver Functioning <<<");
         driverManager.quitDriver();
     }
 
     public static void main(String[] args) {
         chromeTest();
         firefoxTest();
+        ieTest();
     }
 }
