@@ -34,7 +34,8 @@ public class FirefoxWebDriver extends WebDriverManager{
     @Override
     protected void createDriver() {
         FirefoxOptions options = new FirefoxOptions();
-        options.addArguments("headless");
+        options.setBinary("C:/Program Files/Mozilla Firefox/firefox.exe");
+        options.setHeadless(true);
         driver = new FirefoxDriver(firefoxWebDriver,options);
     }
 }

@@ -14,6 +14,7 @@ public class ChromeWebDriver extends WebDriverManager{
     protected void startService() {
         if (null == chromeDriverService) {
             try {
+                //System.setProperty("webdriver.chrome.driver","src/test/resources/chromedriver.exe");
                 chromeDriverService = new ChromeDriverService.Builder()
                         .usingDriverExecutable(new File("src/test/resources/chromedriver.exe"))
                         .usingAnyFreePort()
