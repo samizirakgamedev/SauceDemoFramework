@@ -11,6 +11,7 @@ public class CheckoutCompletePage extends Page {
 
     public CheckoutCompletePage(WebDriver webDriver) {
         super(webDriver);
+        this.getDriver().get("https://www.saucedemo.com/checkout-complete.html");
     }
 
     public boolean isCompleteHeaderPresent(){

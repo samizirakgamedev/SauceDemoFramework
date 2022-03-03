@@ -11,6 +11,7 @@ public class LoginPage extends Page {
 
     public LoginPage(WebDriver webDriver) {
         super(webDriver);
+        this.getDriver().get("https://www.saucedemo.com/");
     }
 
     public void enterUsername(String username){
