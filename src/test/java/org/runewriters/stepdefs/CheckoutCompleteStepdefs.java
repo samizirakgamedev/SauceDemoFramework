@@ -6,16 +6,19 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.runewriters.pom.CartPage;
-import org.runewriters.pom.CheckoutCompletePage;
-import org.runewriters.pom.InventoryItemPage;
+import org.runewriters.pom.*;
 
 public class CheckoutCompleteStepdefs {
     private WebDriver webDriver;
+    private LoginPage loginPage;
     private CartPage cartPage;
     private InventoryItemPage inventoryItemPage;
+    private InventoryPage inventory;
+    private CheckoutOnePage checkoutOnePage;
+    private CheckoutTwoPage checkoutTwoPage;
     private CheckoutCompletePage checkoutCompletePage;
 
     @Before
@@ -30,17 +33,34 @@ public class CheckoutCompleteStepdefs {
 
     @Given("I am on the Checkout Complete page")
     public void iAmOnTheCheckoutCompletePage() {
+        loginPage = new LoginPage(webDriver);
+        loginPage.enterUsername("standard_user");
+        loginPage.enterPassword("secret_sauce");
+        loginPage.clickLogInButton();
+        inventory = new InventoryPage(webDriver);
+        inventory.clickAddToCartOrRemoveButtonAtIndex(0);
+        inventory.clickCartIcon();
+        cartPage = new CartPage(webDriver);
+        cartPage.clickCheckoutButton();
+        checkoutOnePage = new CheckoutOnePage(webDriver);
+        checkoutOnePage.enterFirstNameInTextBox("Suyash");
+        checkoutOnePage.enterLastNameInTextBox("Srivastava");
+        checkoutOnePage.enterZipCodeInTextBox("E14 NS");
+        checkoutOnePage.clickContinueButton();
+        checkoutTwoPage = new CheckoutTwoPage(webDriver);
+        checkoutTwoPage.clickFinishButton();
     }
 
     @When("I click on back home button")
     public void iClickOnBackHomeButton() {
+        checkoutCompletePage = new CheckoutCompletePage(webDriver);
         checkoutCompletePage.clickBackHomeButton();
     }
 
-    @Then("I will go to the Inventory Page")
-    public void iWillGoToTheInventoryPage() {
-        //Assertions.assertEquals("", inventoryItemPage.getUrl());
-    }
+//    @Then("I will go to the Inventory Page")
+//    public void iWillGoToTheInventoryPage() {
+//        Assertions.assertEquals("", inventory.getCurrentURL());
+//    }
 
     @And("The cart will be empty")
     public void theCartWillBeEmpty() {

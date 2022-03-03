@@ -5,6 +5,7 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.runewriters.pom.*;
@@ -13,6 +14,7 @@ public class CheckoutTwoStepdefs {
     private LoginPage loginPage;
     private WebDriver webDriver;
     private InventoryItemPage inventoryItem;
+    private InventoryPage inventory;
     private CartPage cartPage;
     private CheckoutOnePage checkoutOnePage;
     private CheckoutTwoPage checkoutTwoPage;
@@ -24,24 +26,37 @@ public class CheckoutTwoStepdefs {
     public void setup(){
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
         webDriver = new ChromeDriver();
-        //loginPage = new LoginPage(webDriver);
-        //more lines to be added (to log the user in), waiting for the POM classes to get completed
         webDriver.get("https://www.saucedemo.com");
         System.out.println("setup");
     }
 
     @Given("I am on the Checkout Two page")
     public void iAmOnTheCheckoutTwoPage() {
+        loginPage = new LoginPage(webDriver);
+        loginPage.enterUsername("standard_user");
+        loginPage.enterPassword("secret_sauce");
+        loginPage.clickLogInButton();
+        inventory = new InventoryPage(webDriver);
+        inventory.clickAddToCartOrRemoveButtonAtIndex(0);
+        inventory.clickCartIcon();
+        cartPage = new CartPage(webDriver);
+        cartPage.clickCheckoutButton();
+        checkoutOnePage = new CheckoutOnePage(webDriver);
+        checkoutOnePage.enterFirstNameInTextBox("Suyash");
+        checkoutOnePage.enterLastNameInTextBox("Srivastava");
+        checkoutOnePage.enterZipCodeInTextBox("E14 NS");
+        checkoutOnePage.clickContinueButton();
     }
 
     @When("I click on the finish button")
     public void iClickOnTheFinishButton() {
+        checkoutTwoPage = new CheckoutTwoPage(webDriver);
         checkoutTwoPage.clickFinishButton();
     }
 
     @Then("I will go to the checkout complete page")
     public void iWillGoToTheCheckoutCompletePage() {
-        //Assertions.assertEquals("https://www.saucedemo.com/checkout-complete.html", checkoutComplete.getUrl());
+        Assertions.assertEquals("https://www.saucedemo.com/checkout-complete.html", checkoutCompletePage.getCurrentURL());
     }
 
     @When("I click on cancel button")
@@ -49,10 +64,10 @@ public class CheckoutTwoStepdefs {
         checkoutTwoPage.clickCancelButton();
     }
 
-    @Then("I will go to the inventory page")
-    public void iWillGoToTheInventoryPage() {
-        //Assertions.assertEquals("https://www.saucedemo.com/inventory.html", inventoryItem.getUrl());
-    }
+//    @Then("I will go to the inventory page")
+//    public void iWillGoToTheInventoryPage() {
+//        Assertions.assertEquals("https://www.saucedemo.com/inventory.html", inventory.getCurrentURL());
+//    }
 
     @After
     public void tearDown(){
