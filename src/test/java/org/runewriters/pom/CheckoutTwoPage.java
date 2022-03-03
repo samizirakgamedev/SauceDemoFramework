@@ -7,23 +7,23 @@ import org.openqa.selenium.WebElement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CheckoutTwoPage {
+public class CheckoutTwoPage extends Page {
 
     private WebDriver webDriver;
-    By cartBadgeQuantity = new By.ByClassName("shopping_cart_badge");
-    By quantityLabel = new By.ByClassName("cart_quantity_label");
-    By description = new By.ByClassName("cart_desc_label");
-    By cartQuantity = new By.ByClassName("cart_quantity");
-    By itemPrice = new By.ByClassName("inventory_item_price");
-    By itemDescription = new By.ByClassName("inventory_item_desc");
-    By itemName = new By.ByClassName("inventory_item_name");
-    By cartItem = new By.ByClassName("cart_item_label");
-    By subTotalLabel = new By.ByClassName("summary_subtotal_label");
-    By taxTotalLabel = new By.ByClassName("summary_tax_label");
-    By totalPriceLabel = new By.ByClassName("summary_total_label");
-    By paymentInformation = new By.ByClassName("summary_value_label");
-    By cancelButton = new By.ById("cancel");
-    By finishButton = new By.ById("finish");
+    private By cartBadgeQuantity = new By.ByClassName("shopping_cart_badge");
+    private By quantityLabel = new By.ByClassName("cart_quantity_label");
+    private By description = new By.ByClassName("cart_desc_label");
+    private By cartQuantity = new By.ByClassName("cart_quantity");
+    private By itemPrice = new By.ByClassName("inventory_item_price");
+    private By itemDescription = new By.ByClassName("inventory_item_desc");
+    private By itemName = new By.ByClassName("inventory_item_name");
+    private By cartItem = new By.ByClassName("cart_item_label");
+    private By subTotalLabel = new By.ByClassName("summary_subtotal_label");
+    private By taxTotalLabel = new By.ByClassName("summary_tax_label");
+    private By totalPriceLabel = new By.ByClassName("summary_total_label");
+    private By paymentInformation = new By.ByClassName("summary_value_label");
+    private By cancelButton = new By.ById("cancel");
+    private By finishButton = new By.ById("finish");
 
     public CheckoutTwoPage(WebDriver webDriver) {
         this.webDriver = webDriver;

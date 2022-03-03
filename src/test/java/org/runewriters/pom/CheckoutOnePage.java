@@ -3,14 +3,14 @@ package org.runewriters.pom;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class CheckoutOnePage {
+public class CheckoutOnePage extends Page{
 
     private WebDriver webDriver;
-    By firstNameTextBox = new By.ById("first-name");
-    By lastNameTextBox = new By.ById("last-name");
-    By zipCodeTextBox = new By.ById("postal-code");
-    By cancelButton = new By.ById("cancel");
-    By continueButton = new By.ById("continue");
+    private By firstNameTextBox = new By.ById("first-name");
+    private By lastNameTextBox = new By.ById("last-name");
+    private By zipCodeTextBox = new By.ById("postal-code");
+    private By cancelButton = new By.ById("cancel");
+    private By continueButton = new By.ById("continue");
 
     public CheckoutOnePage(WebDriver webDriver) {
         this.webDriver = webDriver;
