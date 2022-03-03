@@ -11,7 +11,6 @@ public abstract class Page {
     private By footerImage = new By.ByClassName("footer_robot");
     private By footerText = new By.ByClassName("footer_copy");
     private By sideMenuButton = new By.ById("react-burger-menu-btn");
-    private By sideMenuOptionsLink = new By.ByClassName("btn-item menu-item");
     private By exitSideMenuButton = new By.ById("react-burger-cross-btn");
     private By cartIcon = new By.ByClassName("shopping_cart_link");
     private By twitterIcon = new By.ByLinkText("Twitter");
@@ -51,19 +50,23 @@ public abstract class Page {
     }
 
     public void clickAllItemsFromSideMenu(){
-        driver.findElements(sideMenuOptionsLink).get(0).click();
+        By sideMenuOptionsLink = new By.ById("inventory_sidebar_link");
+        driver.findElement(sideMenuOptionsLink).click();
     }
 
     public void clickAboutFromSideMenu(){
-        driver.findElements(sideMenuOptionsLink).get(1).click();
+        By sideMenuOptionsLink = new By.ById("about_sidebar_link");
+        driver.findElement(sideMenuOptionsLink).click();
     }
 
     public void clickLogoutFromSideMenu(){
-        driver.findElements(sideMenuOptionsLink).get(2).click();
+        By sideMenuOptionsLink = new By.ById("logout_sidebar_link");
+        driver.findElement(sideMenuOptionsLink).click();
     }
 
     public void clickResetAppStateFromSideMenu(){
-        driver.findElements(sideMenuOptionsLink).get(3).click();
+        By sideMenuOptionsLink = new By.ById("reset_sidebar_link");
+        driver.findElement(sideMenuOptionsLink).click();
     }
 
     public void clickCartIcon(){
