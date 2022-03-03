@@ -79,10 +79,6 @@ public class CheckoutOneStepdefs {
        // checkoutOnePage.clickOnCartIcon(); from page superclass?
     }
 
-    @When("I click on Inventory icon")
-    public void iClickOnInventoryIcon() {
-        // checkoutOnePage.clickOnInventoryIcon(); from page superclass?
-    }
 
     @Then("I will go to the Inventory page")
     public void iWillGoToTheInventoryPage() {
@@ -117,6 +113,16 @@ public class CheckoutOneStepdefs {
     @Then("I will go to the Linkedin page")
     public void iWillGoToTheLinkedinPage() {
         //Assertions.assertEquals("https://www.linkedin.com/company/sauce-labs/", cart.getUrl()); from page superclass
+    }
+
+    @Then("I will go to the Side bar")
+    public void iWillGoToTheSideBar() {
+        //Assertions.assertEquals(checkoutOnePage.isSideBarPresent());
+    }
+
+    @When("I click on Side bar icon")
+    public void iClickOnSideBarIcon() {
+        //checkoutOnePage.clickSideButton();
     }
 
     @After

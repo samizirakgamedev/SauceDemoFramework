@@ -18,10 +18,9 @@ Feature: Able to provide the personal details and navigate to different pages on
       When I click on Cart icon
       Then I will go to the Your Cart page
 
-    Scenario: Getting to the Inventory page from the Checkout One page
-      When I click on Inventory icon
-      Then I will go to the Inventory page
-
+    Scenario: Getting to the Side bar from the Checkout One page
+      When I click on Side bar icon
+      Then I will go to the Side bar
 
     Scenario: Getting to the Twitter page from the Checkout One page
       When I click on Twitter icon
