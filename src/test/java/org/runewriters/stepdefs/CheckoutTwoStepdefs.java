@@ -36,6 +36,7 @@ public class CheckoutTwoStepdefs {
 
     @When("I click on the finish button")
     public void iClickOnTheFinishButton() {
+
         checkoutTwoPage.clickFinishButton();
     }
 

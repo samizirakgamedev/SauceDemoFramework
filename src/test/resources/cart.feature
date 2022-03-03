@@ -3,21 +3,17 @@ Feature: Navigating through Cart page
   Background: Using the cart page
     Given I am on the cart page
 
-  Scenario: Clicking on the product image/title
+  Scenario: Clicking on the image or title of the product
     When I click on the image or title of the product
-    Then I will go to the item page of that product
+    Then I will go to the inventory item page of that product
 
-  Scenario: Clicking add to cart
-    When I click on 'add to cart'
-    Then The button will change to display 'Remove' and the cart will update
+  Scenario: Clicking on 'continue shopping' in cart page
+    When I click on 'continue shopping' in the cart page
+    Then I will go back to the inventory page
 
-  Scenario: An item is displayed in the cart
-    When An item is displayed inside the cart
-    Then I will have an option to continue shopping
-
-  Scenario: An item is displayed in the cart
-    When An item is displayed inside the cart
-    Then I will have an option to checkout
+  Scenario: Clicking on 'Checkout' in cart page
+    When I click on 'Checkout' in the cart page
+    Then I will go to the checkout step one page
 
   Scenario: An item is displayed in the cart
     When An item is displayed inside the cart
@@ -38,6 +34,3 @@ Feature: Navigating through Cart page
   Scenario: Getting to the Linkedin page from the Cart page
     When I click on the Linkedin icon
     Then I will go to the Linkedin page
-
-## When I click on the product name (link)
-  ##It will take me to the product description page with the price

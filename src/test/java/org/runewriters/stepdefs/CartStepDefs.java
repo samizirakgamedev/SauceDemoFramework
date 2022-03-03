@@ -14,6 +14,7 @@ public class CartStepDefs {
     private WebDriver webDriver;
     private CartPage cartPage;
     private InventoryItemPage inventoryItemPage;
+    private InventoryPage inventoryPage;
     private CheckoutCompletePage checkoutCompletePage;
     private CheckoutOnePage checkoutOnePage;
     private CheckoutTwoPage checkoutTwoPage;
@@ -37,54 +38,39 @@ public class CartStepDefs {
     
     @When("I click on the image or title of the product")
     public void clickOnTheImageOrTitleOfProduct() {
-       // Assertions.assertEquals("https://www.saucedemo.com/cart.html", CartPage.getURL());
+
     }
 
-    @Then("I will go to the item page of that product")
-    public void goToTheItemPageOfTheProduct() {
-       // Assertions.assertTrue();
+    @Then("I will go to the inventory item page of that product")
+        public void iWillClickOnitAndTakeMeToTheInventoryItemPage() {
+        Assertions.assertEquals("https://www.saucedemo.com/inventory-item.html?id=4", inventoryItemPage.getCurrentURL());
+
     }
 
-    
-    @When("I click on 'add to cart'")
-    public void clickOnAddToCart() {
-        // Assertions.assertEquals("https://www.saucedemo.com/cart.html", CartPage.getURL());
+    @When("I click on 'continue shopping' in cart page")
+    public void clickOnContinueShoppingInCartPage() {
+        cartPage.clickContinueShoppingButton();
+
     }
 
-    @Then("The button will change to display 'Remove' and the cart will update")
-    public void buttonWillDisplayRemoveAndCartUpdate() {
-        // Assertions.assertTrue();
+    @Then("I will go back to the Inventory page")
+    public void iWillGoBackToTheInventoryPage() {
+        Assertions.assertEquals("https://www.saucedemo.com/inventory.html", inventoryPage.getCurrentURL());
     }
 
+    @When("I click on 'Checkout' in cart page")
+        public void clickOnCheckoutInCartPage() {
+    }
 
-
+    @Then("I will go the 'checkout step one' page")
+    public void iWillGoToTheCheckoutStepOnePage() {
+        Assertions.assertEquals("https://www.saucedemo.com/checkout-step-one.html", checkoutOnePage.getCurrentURL());
+    }
 
     @When("An item is displayed inside the cart")
     public void itemDisplayedInsideTheCart() {
-        // Assertions.assertEquals("https://www.saucedemo.com/cart.html", Cartpage.getURL());
-    }
+        cartPage.clickRemoveItemAtIndex(1);
 
-    @Then("I will have an option to continue shopping")
-    public void optionToContinueShopping() {
-        cartPage.clickContinueShoppingButton();
-     //   Assertions.assertEquals("https://www.saucedemo.com/cart.html",cartPage.clickContinueShoppingButton());
-    }
-
-    @When("An item is displayed inside the cart")
-    public void itemDisplayedInsideTheCart1() {
-      //  Assertions.assertEquals("https://www.saucedemo.com/cart.html", cartPage.clickCheckoutButton());
-    }
-
-    @Then("I will have an option to checkout")
-    public void optionToCheckout() {
-        cartPage.clickCheckoutButton();
-       // Assertions.assertEquals("https://www.saucedemo.com/cart.html", cartPage.clickCheckoutButton());
-
-    }
-
-    @When("An item is displayed inside the cart")
-    public void itemDisplayedInsideTheCart2() {
-      //  Assertions.assertEquals("https://www.saucedemo.com/cart.html", cartPage.clickRemoveItemAtIndex(1));
     }
 
     @Then("I will have an option to remove that item from the cart")
@@ -94,51 +80,53 @@ public class CartStepDefs {
 
     }
 
-    @When("An item is displayed inside the cart")
-    public void itemDisplayedInsideTheCart3() {
-        // Assertions.assertEquals("https://www.saucedemo.com/cart.html", Cartpage.getURL());
+    @When("An item is displayed in the cart page")
+    public void itemDisplayedInsideTheCart1() {
+        cartPage.getItemPriceAtIndex(15);
+
     }
 
     @Then("I will see the price of the product")
     public void iWillSeeThePriceOfTheProduct() {
-        cartPage.getItemPriceAtIndex(15);
-        // Assertions.assertTrue();
-    }
+        // Assertions.assertEquals("https://www.saucedemo.com/cart.html", Cartpage.getURL());
 
+    }
 
     //Twitter
     @When("When I click on the Twitter icon")
     public void clickOnTheTwitterIcon() {
-        //Assertions.assertEquals("https://twitter.com/saucelabs", cartPage.getUrl());
+
 
     }
 
     @Then("I will go to the Twitter page")
     public void iWillGoToTheTwitterPage() {
-        // Assertions.assertTrue();
+        Assertions.assertEquals("https://twitter.com/saucelabs", cartPage.getCurrentURL());
+
     }
 
     //Facebook
     @When("When I click on the Facebook icon")
     public void clickOnTheFacebookIcon() {
-        //Assertions.assertEquals("https://www.facebook.com/saucelabs", cartPage.getUrl());
 
     }
 
     @Then("I will go to the Facebook page")
     public void iWillGoToTheFacebookPage() {
-        // Assertions.assertTrue();
+        Assertions.assertEquals("https://www.facebook.com/saucelabs", cartPage.getCurrentURL());
+
     }
 
    //Linkedin
     @When("When I click on the Linkedin icon")
     public void clickOnTheLinkedinIcon() {
-        //Assertions.assertEquals("https://www.linkedin.com/company/sauce-labs/", cart.getUrl());
+
     }
 
     @Then("I will go to the Linkedin page")
     public void iWillGoToTheLinkedinPage() {
-        // Assertions.assertTrue();
+        Assertions.assertEquals("https://www.linkedin.com/company/sauce-labs/", cartPage.getCurrentURL());
+
     }
 
     @After
