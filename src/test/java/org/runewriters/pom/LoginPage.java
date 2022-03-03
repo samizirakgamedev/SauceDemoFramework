@@ -3,11 +3,11 @@ package org.runewriters.pom;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class LoginPage {
+public class LoginPage extends Page {
     private WebDriver webDriver;
-    By usernameTextBox = new By.ById("user-name");
-    By passwordTextBox = new By.ById("password");
-    By loginButton = new By.ById("login-button");
+    private By usernameTextBox = new By.ById("user-name");
+    private By passwordTextBox = new By.ById("password");
+    private By loginButton = new By.ById("login-button");
 
 
     public LoginPage(WebDriver webDriver) {

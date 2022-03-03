@@ -3,16 +3,16 @@ package org.runewriters.pom;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class InventoryPage {
+public class InventoryPage extends Page {
 
     private WebDriver webDriver;
-    By itemImages = new By.ByClassName("inventory_item_img");
-    By itemNames = new By.ByClassName("inventory_item_name");
-    By itemPrices = new By.ByClassName("inventory_item_price");
-    By itemDescription = new By.ByClassName("inventory_item_desc");
-    By addToCartOrRemoveButtons = new By.ByName("btn btn_primary btn_small btn_inventory");
-    By filterButton = new By.ByClassName("product_sort_container");
-    By filterOptions = new By.ByTagName("option");
+    private By itemImages = new By.ByClassName("inventory_item_img");
+    private By itemNames = new By.ByClassName("inventory_item_name");
+    private By itemPrices = new By.ByClassName("inventory_item_price");
+    private By itemDescription = new By.ByClassName("inventory_item_desc");
+    private By addToCartOrRemoveButtons = new By.ByName("btn btn_primary btn_small btn_inventory");
+    private By filterButton = new By.ByClassName("product_sort_container");
+    private By filterOptions = new By.ByTagName("option");
 
     public InventoryPage(WebDriver webDriver) {
         this.webDriver = webDriver;
