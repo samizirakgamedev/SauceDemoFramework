@@ -23,6 +23,6 @@ public abstract class Page {
 
     }
     void isFooterTextPresent(){
-        
+
     }
 }
