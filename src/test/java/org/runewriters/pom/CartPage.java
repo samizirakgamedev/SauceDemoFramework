@@ -6,41 +6,39 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class CartPage {
+public class CartPage extends Page {
 
-    private WebDriver driver;
-
-    By cartItems = new By.ByClassName("inventory_item_name");
-    By cartItemPrice = new By.ByClassName("inventory_item_price");
-    By continueShopping = new By.ById("Continue Shopping");
-    By checkout = new By.ById("Checkout");
-    By remove = new By.ByClassName("btn btn_secondary btn_small cart_button");
-
+    private By cartItems = new By.ByClassName("inventory_item_name");
+    private By cartItemPrice = new By.ByClassName("inventory_item_price");
+    private By continueShopping = new By.ById("Continue Shopping");
+    private By checkout = new By.ById("Checkout");
+    private By remove = new By.ByClassName("btn btn_secondary btn_small cart_button");
 
     public CartPage(WebDriver driver){
-        this.driver = driver;
+        super(driver);
+        this.getDriver().get("https://www.saucedemo.com/cart.html");
     }
 
     public void clickItemAtIndex(int index){
-        List<WebElement> cartItemNames = driver.findElements(cartItems);
+        List<WebElement> cartItemNames = this.getDriver().findElements(cartItems);
         cartItemNames.get(index).click();
     }
     public String getItemPriceAtIndex(int index){
-        List<WebElement> cartItemPrices = driver.findElements(cartItemPrice);
+        List<WebElement> cartItemPrices = this.getDriver().findElements(cartItemPrice);
         return cartItemPrices.get(index).getText();
     }
 
     public void clickRemoveItemAtIndex(int index){
-        List<WebElement> removeButtons = driver.findElements(remove);
+        List<WebElement> removeButtons = this.getDriver().findElements(remove);
         removeButtons.get(index).click();
     }
 
     public void clickContinueShoppingButton(){
-        driver.findElement(continueShopping).click();
+        this.getDriver().findElement(continueShopping).click();
     }
 
     public void clickCheckoutButton(){
-        driver.findElement(checkout).click();
+        this.getDriver().findElement(checkout).click();
     }
 
 
