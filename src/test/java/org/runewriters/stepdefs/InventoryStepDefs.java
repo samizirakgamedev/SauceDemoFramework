@@ -7,6 +7,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.cucumber.java.sl.In;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -27,10 +28,8 @@ public class InventoryStepDefs {
     public void setUps(){
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         PomUtils.setDriverLocation();
-        service = PomUtils.setChromeDriverService("src/test/resources/chromedriver.exe");
-        webDriver = new ChromeDriver(service);
+        webDriver = new ChromeDriver();
         webDriver.get("https://www.saucedemo.com");
-        inventoryPage = new InventoryPage(webDriver);
     }
 
     @Given("I am in inventory page")
@@ -42,24 +41,32 @@ public class InventoryStepDefs {
     }
 
     @When("I click the product")
-    public void iClickTheProduct(){
+    public void iClickTheProductSingle(){
         inventoryPage = new InventoryPage(webDriver);
-        inventoryPage.clickItemImageAtIndex(1);
+        inventoryItemPage = new InventoryItemPage(webDriver);
+        System.out.println(inventoryItemPage.getItemPrice());
+    }
+
+
+    @When("I click the product {int}")
+    public void iClickTheProduct(int index){
+        // inventoryPage = new InventoryPage(webDriver);
+        //  inventoryPage.clickItemImageAtIndex(index);
     }
 
     @Then("I get into the product information page")
     public void iGetIntoTheProductInformationPage(){
-      //  Assertions.assertEquals("https://www.saucedemo.com/", webDriver.getCurrentUrl());
+        inventoryItemPage = new InventoryItemPage(webDriver);
     }
 
-    @And("The price is a valid number")
-    public void thePriceIsAValidNumber(){
-
+    @And("The price is match with the product {int}")
+    public void thePriceIsMatchWithTheProduct(int index){
+      //  Assertions.assertEquals(inventoryPage.getPriceAtIndex(index), inventoryItemPage.getItemPrice());
     }
 
     @After
     public void tearDown(){
-       // webDriver.quit();
+        webDriver.quit();
     }
 
 }
