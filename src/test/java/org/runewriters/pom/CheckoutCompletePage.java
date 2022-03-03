@@ -7,7 +7,7 @@ public class CheckoutCompletePage extends Page {
 
     private By completeHeader = new By.ByClassName("complete-header");
     private By ponyExpressImage = new By.ByClassName("pony_express");
-    private By backHomeButton = new By.ByClassName("btn btn_primary btn_small");
+    private By backHomeButton = new By.ById("back-to-products");
 
     public CheckoutCompletePage(WebDriver webDriver) {
         super(webDriver);
