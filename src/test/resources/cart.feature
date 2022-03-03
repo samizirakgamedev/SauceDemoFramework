@@ -19,16 +19,19 @@ Feature: Navigating through Cart page
     When An item is displayed inside the cart
     Then I will have an option to checkout
 
+  Scenario: An item is displayed in the cart
+    When An item is displayed inside the cart
+    Then I will have an option to remove that item from the cart
 
+  Scenario: Getting to the Twitter page from the Cart page
+    When I click on the Twitter icon
+    Then I will go to the Twitter page
 
+  Scenario: Getting to the Facebook page from the Cart page
+    When I click on the Facebook icon
+    Then I will go to the Facebook page
 
+  Scenario: Getting to the Linkedin page from the Cart page
+    When I click on the Linkedin icon
+    Then I will go to the Linkedin page
 
-
-
-
-  # Clicking the product image/title takes u to that item page (or from cart)
-  # Upon clicking add to cart, change to remove button + update the cart (quantity)
-  # Social links in the footer (+ image)
-  # Cart
-  # Continue shopping from cart
-  # Remove items from cart

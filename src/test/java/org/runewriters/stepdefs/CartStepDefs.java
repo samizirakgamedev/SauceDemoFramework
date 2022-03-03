@@ -58,12 +58,55 @@ public class CartStepDefs {
     }
 
     @When("An item is displayed inside the cart")
-    public void itemDisplayedInsideTheCartt() {
+    public void itemDisplayedInsideTheCart1() {
         // Assertions.assertEquals("https://www.saucedemo.com/cart.html", Cartpage.getURL());
     }
 
     @Then("I will have an option to checkout")
-    public void optionToContinueShoppingt() {
+    public void optionToCheckout() {
+        // Assertions.assertTrue();
+    }
+
+    @When("An item is displayed inside the cart")
+    public void itemDisplayedInsideTheCart2() {
+        // Assertions.assertEquals("https://www.saucedemo.com/cart.html", Cartpage.getURL());
+    }
+
+    @Then("I will have an option to remove that item from the cart")
+    public void removeTheItemFromTheCart() {
+        // Assertions.assertTrue();
+    }
+
+   //Twitter
+    @When("When I click on the Twitter icon")
+    public void clickOnTheTwitterIcon() {
+        // Assertions.assertEquals("https://www.saucedemo.com/cart.html", Cartpage.getURL());
+    }
+
+    @Then("I will go to the Twitter page")
+    public void iWillGoToTheTwitterPage() {
+        // Assertions.assertTrue();
+    }
+
+    //Facebook
+    @When("When I click on the Facebook icon")
+    public void clickOnTheFacebookIcon() {
+        // Assertions.assertEquals("https://www.saucedemo.com/cart.html", Cartpage.getURL());
+    }
+
+    @Then("I will go to the Facebook page")
+    public void iWillGoToTheFacebookPage() {
+        // Assertions.assertTrue();
+    }
+
+   //Linkedin
+    @When("When I click on the Linkedin icon")
+    public void clickOnTheLinkedinIcon() {
+        // Assertions.assertEquals("https://www.saucedemo.com/cart.html", Cartpage.getURL());
+    }
+
+    @Then("I will go to the Linkedin page")
+    public void iWillGoToTheLinkedinPage() {
         // Assertions.assertTrue();
     }
 
@@ -72,6 +115,4 @@ public class CartStepDefs {
         webDriver.quit();
         System.out.println("tearDown");
     }
-
 }
-
