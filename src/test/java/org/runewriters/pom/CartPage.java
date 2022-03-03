@@ -16,6 +16,7 @@ public class CartPage extends Page {
 
     public CartPage(WebDriver driver){
         super(driver);
+        this.getDriver().get("https://www.saucedemo.com/cart.html");
     }
 
     public void clickItemAtIndex(int index){
