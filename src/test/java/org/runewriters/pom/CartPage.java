@@ -12,7 +12,7 @@ public class CartPage extends Page {
     private By cartItemPrice = new By.ByClassName("inventory_item_price");
     private By continueShopping = new By.ById("continue-shopping");
     private By checkout = new By.ById("checkout");
-    private By remove = new By.ById("remove-sauce-labs-backpack");
+    private By remove = new By.ByClassName("btn");
 
     public CartPage(WebDriver driver){
         super(driver);
@@ -36,6 +36,10 @@ public class CartPage extends Page {
     public void clickRemoveItemAtIndex(int index){
         List<WebElement> removeButtons = this.getDriver().findElements(remove);
         removeButtons.get(index).click();
+    }
+
+    public int getCartSize(){
+        return this.getDriver().findElements(cartItems).size();
     }
 
     public void clickContinueShoppingButton(){
