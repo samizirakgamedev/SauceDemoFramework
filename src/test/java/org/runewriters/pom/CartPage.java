@@ -38,6 +38,10 @@ public class CartPage extends Page {
         removeButtons.get(index).click();
     }
 
+    public int getCartSize(){
+        return this.getDriver().findElements(cartItems).size();
+    }
+
     public void clickContinueShoppingButton(){
         this.getDriver().findElement(continueShopping).click();
     }
