@@ -11,16 +11,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.runewriters.pom.*;
 
 public class CheckoutTwoStepdefs {
+
     private LoginPage loginPage;
     private WebDriver webDriver;
-    private InventoryItemPage inventoryItem;
     private InventoryPage inventory;
     private CartPage cartPage;
     private CheckoutOnePage checkoutOnePage;
     private CheckoutTwoPage checkoutTwoPage;
     private CheckoutCompletePage checkoutCompletePage;
-
-    //This file will be updated. Waiting for POM classes
 
     @Before
     public void setup(){
@@ -62,7 +60,24 @@ public class CheckoutTwoStepdefs {
 
     @When("I click on cancel button")
     public void iClickOnCancelButton() {
+        checkoutTwoPage = new CheckoutTwoPage(webDriver);
         checkoutTwoPage.clickCancelButton();
+    }
+
+    @Then("I will go to the Inventory Pagee")
+    public void iWillGoToTheInventoryPage() {
+        Assertions.assertEquals("https://www.saucedemo.com/inventory.html", inventory.getCurrentURL());
+    }
+
+    @When("I click on Cart icone")
+    public void iClickOnCartIcon() {
+        checkoutTwoPage = new CheckoutTwoPage(webDriver);
+        checkoutTwoPage.clickCartIcon();
+    }
+
+    @Then("I will go to the Your Cart pagee")
+    public void iWillGoToTheYourCartPage() {
+        Assertions.assertEquals("https://www.saucedemo.com/cart.html", cartPage.getCurrentURL());
     }
 
     @After
