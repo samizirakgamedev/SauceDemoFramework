@@ -23,9 +23,14 @@ public class CartPage extends Page {
         List<WebElement> cartItemNames = this.getDriver().findElements(cartItems);
         cartItemNames.get(index).click();
     }
+
     public String getItemPriceAtIndex(int index){
         List<WebElement> cartItemPrices = this.getDriver().findElements(cartItemPrice);
         return cartItemPrices.get(index).getText();
+    }
+
+    public String getItemNameAtIndex(int index){
+        return this.getDriver().findElements(cartItems).get(index).getText();
     }
 
     public void clickRemoveItemAtIndex(int index){

@@ -10,7 +10,7 @@ public class InventoryItemPage extends Page {
     private By itemDescription = new By.ByClassName("inventory_details_desc");
     private By itemPrice = new By.ByClassName("inventory_details_price");
     private By backToProductsButton = new By.ById("back-to-products");
-    private By addToCartOrRemoveButtons = new By.ByClassName("btn");
+    private By inventoryPageButtons = new By.ByClassName("btn");
     private By shoppingCartBade = new By.ByClassName("shopping_cart_badge");
 
     public InventoryItemPage(WebDriver webDriver) {
@@ -33,14 +33,8 @@ public class InventoryItemPage extends Page {
         return this.getDriver().findElement(itemPrice).getText();
     }
 
-    public void clickAddToCartButton(){
-        By addToCartButton = new By.ById("add-to-cart-sauce-labs-backpack");
-        this.getDriver().findElement(addToCartButton).click();
-    }
-
-    public void clickRemoveItemButton(){
-        By removeButton = new By.ById("add-to-cart-sauce-labs-backpack");
-        this.getDriver().findElement(removeButton).click();
+    public void clickAddToCartOrRemoveButton(){
+        this.getDriver().findElements(inventoryPageButtons).get(1).click();
     }
 
     public void clickBackToProductsButton(){
@@ -48,7 +42,7 @@ public class InventoryItemPage extends Page {
     }
 
     public String getAddToCartOrRemoveButtonName(){
-        return this.getDriver().findElements(addToCartOrRemoveButtons).get(1).getText();
+        return this.getDriver().findElements(inventoryPageButtons).get(1).getText();
     }
 
     public String getShoppingCartBadge(){
