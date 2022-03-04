@@ -13,27 +13,27 @@ public class SafariWebDriver extends WebDriverManager {
 
     @Override
     protected void startService() {
-        if (null == safariDriverService) {
-            try {
-                safariDriverService = new SafariDriverService.Builder()
-                        .usingDriverExecutable(new File("src/test/resources/safaridriver.exe"))
-                        .usingAnyFreePort()
-                        .build();
-                safariDriverService.start();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+//        if (null == safariDriverService) {
+//            try {
+//                safariDriverService = new SafariDriverService.Builder()
+//                        .usingDriverExecutable(new File("src/test/resources/safaridriver.exe"))
+//                        .usingAnyFreePort()
+//                        .build();
+//                safariDriverService.start();
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
     }
 
     @Override
     protected void stopService() {
-        if (null != safariDriverService && safariDriverService.isRunning())
-            safariDriverService.stop();
+        //       if (null != safariDriverService && safariDriverService.isRunning())
+//            safariDriverService.stop();
     }
 
     @Override
     protected void createDriver() {
-        driver = new SafariDriver(safariDriverService);
+        driver = new SafariDriver();
     }
 }
