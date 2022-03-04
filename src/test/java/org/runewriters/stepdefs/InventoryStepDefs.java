@@ -165,9 +165,24 @@ public class InventoryStepDefs {
         }
     }
 
+    @When("I click add to cart or remove button {int}")
+    public void iClickAddToCart(int i){
+        inventoryPage.clickAddToCartOrRemoveButtonAtIndex(i);
+    }
+
+//    @Then("{int} button shows remove")
+//    public void buttonShowsRemove(int i){
+//        Assertions.assertEquals("REMOVE",inventoryPage.getAddToCartOrRemoveButtonAtIndexText(i));
+//    }
+
+//    @Then("{int} button shows add to chart")
+//    public void buttonShowsAddToChart(int i){
+//        Assertions.assertEquals("ADD TO CART",inventoryPage.getAddToCartOrRemoveButtonAtIndexText(i));
+//    }
+
     @After
     public void tearDown(){
-        webDriver.quit();
+       webDriver.quit();
     }
 
 }
