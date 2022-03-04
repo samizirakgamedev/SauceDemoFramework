@@ -14,8 +14,9 @@ public class IEWebDriver extends WebDriverManager {
     protected void startService() {
         if (null == internetExplorerDriverService) {
             try {
+                System.setProperty("webdriver.ie.driver", "src/test/resources/IEDriverServer.exe");
                 internetExplorerDriverService = new InternetExplorerDriverService.Builder().
-                        usingDriverExecutable(new File("src/test/resources/iedriver.exe"))
+                        usingDriverExecutable(new File("src/test/resources/IEDriverServer.exe"))
                         .usingAnyFreePort()
                         .build();
                 internetExplorerDriverService.start();

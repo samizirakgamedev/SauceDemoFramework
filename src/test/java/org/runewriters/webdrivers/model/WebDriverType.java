@@ -4,5 +4,6 @@ public enum WebDriverType {
     CHROME,
     FIREFOX,
     SAFARI,
+    OPERA,
     IE
 }
