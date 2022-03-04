@@ -20,6 +20,14 @@ public class CheckoutTwoStepdefs {
     private CheckoutTwoPage checkoutTwoPage;
     private CheckoutCompletePage checkoutCompletePage;
 
+    @Before
+    public void setup(){
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
+        webDriver = new ChromeDriver();
+        webDriver.get("https://www.saucedemo.com");
+        System.out.println("setup");
+    }
+
     @Given("I am on the Checkout Two page")
     public void iAmOnTheCheckoutTwoPage() {
         loginPage = new LoginPage(webDriver);
@@ -70,5 +78,11 @@ public class CheckoutTwoStepdefs {
     @Then("I will go to the Your Cart pagee")
     public void iWillGoToTheYourCartPage() {
         Assertions.assertEquals("https://www.saucedemo.com/cart.html", cartPage.getCurrentURL());
+    }
+
+    @After
+    public void tearDown(){
+        webDriver.quit();
+        System.out.println("tearDown");
     }
 }
