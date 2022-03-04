@@ -89,15 +89,15 @@ public class CartStepDefs {
     @When("An item is displayed inside the cart")
     public void itemDisplayedInsideTheCart() {
         cartPage = new CartPage(webDriver);
-
+        cartPage.g
     }
 
     @Then("I will have an option to remove that item from the cart")
     public void removeTheItemFromTheCart() {
-     // Assertions.assertEquals("https://www.saucedemo.com/cart.html", cartPage.clickRemoveItemAtIndex(1));
+      //  cartPage.clickRemoveItemAtIndex();
 
     }
-    
+
     @When("An item is displayed in the cart page")
     public void itemDisplayedInsideTheCart1() {
         cartPage = new CartPage(webDriver);

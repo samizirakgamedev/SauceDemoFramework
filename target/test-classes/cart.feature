@@ -20,6 +20,5 @@ Feature: Navigating through Cart page
     Then I will have an option to remove that item from the cart
 
   Scenario: An item is displayed in the cart
-    When An item is displayed inside the cart
+    When An item is displayed in the cart page
     Then I will see the price of the product
-    
