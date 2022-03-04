@@ -10,6 +10,8 @@ public class InventoryItemPage extends Page {
     private By itemDescription = new By.ByClassName("inventory_details_desc");
     private By itemPrice = new By.ByClassName("inventory_details_price");
     private By backToProductsButton = new By.ById("back-to-products");
+    private By addToCartOrRemoveButtons = new By.ByClassName("btn");
+    private By shoppingCartBade = new By.ByClassName("shopping_cart_badge");
 
     public InventoryItemPage(WebDriver webDriver) {
         super(webDriver);
@@ -43,5 +45,13 @@ public class InventoryItemPage extends Page {
 
     public void clickBackToProductsButton(){
         this.getDriver().findElement(backToProductsButton).click();
+    }
+
+    public String getButtonName(){
+        return this.getDriver().findElement(addToCartOrRemoveButtons).getText();
+    }
+
+    public String getShoppingCartBadge(){
+        return this.getDriver().findElement(shoppingCartBade).getText();
     }
 }
