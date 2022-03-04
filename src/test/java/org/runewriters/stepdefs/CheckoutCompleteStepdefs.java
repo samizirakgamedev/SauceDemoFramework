@@ -24,7 +24,7 @@ public class CheckoutCompleteStepdefs { //TODO keep social media checks in one f
 
     @Before
     public void setup(){
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         webDriver = new ChromeDriver();
         webDriver.get("https://www.saucedemo.com");
         System.out.println("setup");
