@@ -94,8 +94,9 @@ public class CartStepDefs {
 
     @Then("I will have an option to remove that item from the cart")
     public void removeTheItemFromTheCart() {
-       // Assertions.assertEquals();
-        
+        cartPage.clickRemoveItemAtIndex(2);
+        Assertions.assertEquals(2,cartPage.getCartSize());
+
     }
 
     @When("An item is displayed in the cart page")
