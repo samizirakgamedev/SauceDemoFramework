@@ -12,6 +12,7 @@ public class InventoryPage extends Page {
     private By addToCartOrRemoveButtons = new By.ByClassName("btn");
     private By filterButton = new By.ByClassName("product_sort_container");
     private By filterOptions = new By.ByTagName("option");
+    private By shoppingCartBade = new By.ByClassName("shopping_cart_badge");
 
     public InventoryPage(WebDriver webDriver) {
         super(webDriver);
@@ -64,5 +65,13 @@ public class InventoryPage extends Page {
     public void filterPageByPriceHighToLow(){
         this.getDriver().findElement(filterButton).click();
         this.getDriver().findElements(filterOptions).get(3).click();
+    }
+
+    public String getButtonNameAtIndex(int index){
+        return this.getDriver().findElements(addToCartOrRemoveButtons).get(index).getText();
+    }
+
+    public String getShoppingCartBadge(){
+        return this.getDriver().findElement(shoppingCartBade).getText();
     }
 }
