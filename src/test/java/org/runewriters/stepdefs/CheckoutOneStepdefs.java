@@ -10,19 +10,17 @@ import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.runewriters.pom.*;
+import java.util.ArrayList;
 
 public class CheckoutOneStepdefs {
 
     private LoginPage loginPage;
     private WebDriver webDriver;
-    private Page page;
-    private static InventoryItemPage inventoryItem;
     private InventoryPage inventory;
     private CartPage cartPage;
     private CheckoutOnePage checkoutOnePage;
     private CheckoutTwoPage checkoutTwoPage;
 
-//This file will be updated
     @Before
     public void setup(){
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
@@ -73,6 +71,7 @@ public class CheckoutOneStepdefs {
 
     @When("I click on Cancel button")
     public void iClickOnCancelButton() {
+        checkoutOnePage = new CheckoutOnePage(webDriver);
         checkoutOnePage.clickCancelButton();
     }
 
@@ -83,42 +82,61 @@ public class CheckoutOneStepdefs {
 
     @When("I click on Cart icon")
     public void iClickOnCartIcon() {
+        checkoutOnePage = new CheckoutOnePage(webDriver);
        checkoutOnePage.clickCartIcon();
     }
 
     @Then("I will go to the Inventory page")
     public void iWillGoToTheInventoryPage() {
-        //inventory = new InventoryPage(webDriver);
         Assertions.assertEquals("https://www.saucedemo.com/inventory.html", inventory.getCurrentURL());
     }
 
     @When("I click on Twitter icon")
     public void iClickOnTwitterIcon() {
+        checkoutOnePage = new CheckoutOnePage(webDriver);
         checkoutOnePage.clickTwitterIcon();
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Then("I will go to the Twitter page")
     public void iWillGoToTheTwitterPage() {
-        Assertions.assertEquals("https://twitter.com/saucelabs", checkoutOnePage.getCurrentURL());
+        Assertions.assertEquals("https://twitter.com/saucelabs", webDriver.switchTo().window(new ArrayList<>(webDriver.getWindowHandles()).get(1)).getCurrentUrl());
     }
 
     @When("I click on Facebook icon")
     public void iClickOnFacebookIcon() {
-        checkoutOnePage.clickFacebookIcon();    }
+        checkoutOnePage = new CheckoutOnePage(webDriver);
+        checkoutOnePage.clickFacebookIcon();
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Then("I will go to the Facebook page")
     public void iWillGoToTheFacebookPage() {
-        Assertions.assertEquals("https://www.facebook.com/saucelabs", checkoutOnePage.getCurrentURL());
+        Assertions.assertEquals("https://www.facebook.com/saucelabs", webDriver.switchTo().window(new ArrayList<>(webDriver.getWindowHandles()).get(1)).getCurrentUrl());
     }
 
     @When("I click on Linkedin icon")
     public void iClickOnLinkedinIcon() {
-        page.clickLinkedinIcon();
+        checkoutOnePage = new CheckoutOnePage(webDriver);
+        checkoutOnePage.clickLinkedinIcon();
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Then("I will go to the Linkedin page")
     public void iWillGoToTheLinkedinPage() {
-        Assertions.assertEquals("https://www.linkedin.com/company/sauce-labs/", page.getCurrentURL());
+        Assertions.assertEquals("https://www.linkedin.com/company/sauce-labs/", webDriver.switchTo().window(new ArrayList<>(webDriver.getWindowHandles()).get(1)).getCurrentUrl());
     }
 
     @Then("I will go to the Side bar")
@@ -128,7 +146,8 @@ public class CheckoutOneStepdefs {
 
     @When("I click on Side bar icon")
     public void iClickOnSideBarIcon() {
-        page.clickSideMenu();
+        checkoutOnePage = new CheckoutOnePage(webDriver);
+        checkoutOnePage.clickSideMenu();
     }
     @After
     public void tearDown(){
