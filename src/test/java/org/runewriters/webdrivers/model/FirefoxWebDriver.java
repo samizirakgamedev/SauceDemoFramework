@@ -8,17 +8,17 @@ import java.io.File;
 
 public class FirefoxWebDriver extends WebDriverManager{
 
-    private GeckoDriverService firefoxWebDriver;
+    private GeckoDriverService firefoxDriverService;
 
     @Override
     protected void startService() {
-        if (null == firefoxWebDriver) {
+        if (null == firefoxDriverService) {
             try {
-                firefoxWebDriver = new GeckoDriverService.Builder()
+                firefoxDriverService = new GeckoDriverService.Builder()
                         .usingDriverExecutable(new File("src/test/resources/geckodriver.exe"))
                         .usingAnyFreePort()
                         .build();
-                firefoxWebDriver.start();
+                firefoxDriverService.start();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -27,14 +27,15 @@ public class FirefoxWebDriver extends WebDriverManager{
 
     @Override
     protected void stopService() {
-        if (null != firefoxWebDriver && firefoxWebDriver.isRunning())
-            firefoxWebDriver.stop();
+        if (null != firefoxDriverService && firefoxDriverService.isRunning())
+            firefoxDriverService.stop();
     }
 
     @Override
     protected void createDriver() {
         FirefoxOptions options = new FirefoxOptions();
-        options.addArguments("headless");
-        driver = new FirefoxDriver(firefoxWebDriver,options);
+        options.setBinary("C:/Program Files/Mozilla Firefox/firefox.exe");
+        options.setHeadless(true);
+        driver = new FirefoxDriver(firefoxDriverService,options);
     }
 }
