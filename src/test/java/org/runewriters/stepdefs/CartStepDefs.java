@@ -10,9 +10,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.runewriters.pom.*;
 
+import java.util.ArrayList;
+
 public class CartStepDefs {
     private WebDriver webDriver;
     private CartPage cartPage;
+    private LoginPage loginPage;
     private InventoryItemPage inventoryItemPage;
     private InventoryPage inventoryPage;
     private CheckoutCompletePage checkoutCompletePage;
@@ -33,16 +36,24 @@ public class CartStepDefs {
 
     @Given("I am on the cart page")
     public void iAmOnTheCartPage() {
+        loginPage = new LoginPage(webDriver);
+        loginPage.enterUsername("standard_user");
+        loginPage.enterPassword("secret_sauce");
+        loginPage.clickLogInButton();
+        inventoryPage = new InventoryPage(webDriver);
+        inventoryPage.clickAddToCartOrRemoveButtonAtIndex(0);
+        inventoryPage.clickCartIcon();
 
     }
     
     @When("I click on the image or title of the product")
     public void clickOnTheImageOrTitleOfProduct() {
+        cartPage.clickItemAtIndex(4);
 
     }
 
     @Then("I will go to the inventory item page of that product")
-        public void iWillClickOnitAndTakeMeToTheInventoryItemPage() {
+        public void iWillClickOnItAndTakeMeToTheInventoryItemPage() {
         Assertions.assertEquals("https://www.saucedemo.com/inventory-item.html?id=4", inventoryItemPage.getCurrentURL());
 
     }
@@ -60,6 +71,7 @@ public class CartStepDefs {
 
     @When("I click on 'Checkout' in cart page")
         public void clickOnCheckoutInCartPage() {
+        cartPage.clickCheckoutButton();
     }
 
     @Then("I will go the 'checkout step one' page")
@@ -95,38 +107,55 @@ public class CartStepDefs {
     //Twitter
     @When("When I click on the Twitter icon")
     public void clickOnTheTwitterIcon() {
-
+        cartPage = new CartPage(webDriver);
+        cartPage.clickTwitterIcon();
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
     }
 
     @Then("I will go to the Twitter page")
     public void iWillGoToTheTwitterPage() {
-        Assertions.assertEquals("https://twitter.com/saucelabs", cartPage.getCurrentURL());
+        Assertions.assertEquals("https://twitter.com/saucelabs", webDriver.switchTo().window(new ArrayList<>(webDriver.getWindowHandles()).get(1)).getCurrentUrl());
 
     }
 
     //Facebook
     @When("When I click on the Facebook icon")
     public void clickOnTheFacebookIcon() {
-
+        cartPage = new CartPage(webDriver);
+        cartPage.clickFacebookIcon();
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Then("I will go to the Facebook page")
     public void iWillGoToTheFacebookPage() {
-        Assertions.assertEquals("https://www.facebook.com/saucelabs", cartPage.getCurrentURL());
+        Assertions.assertEquals("https://www.facebook.com/saucelabs", webDriver.switchTo().window(new ArrayList<>(webDriver.getWindowHandles()).get(1)).getCurrentUrl());
 
     }
 
    //Linkedin
     @When("When I click on the Linkedin icon")
     public void clickOnTheLinkedinIcon() {
-
+        cartPage = new CartPage(webDriver);
+        cartPage.clickLinkedinIcon();
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Then("I will go to the Linkedin page")
     public void iWillGoToTheLinkedinPage() {
-        Assertions.assertEquals("https://www.linkedin.com/company/sauce-labs/", cartPage.getCurrentURL());
-
+        Assertions.assertEquals("https://www.linkedin.com/company/sauce-labs/", webDriver.switchTo().window(new ArrayList<>(webDriver.getWindowHandles()).get(1)).getCurrentUrl());
     }
 
     @After
