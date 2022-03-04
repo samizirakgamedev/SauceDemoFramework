@@ -22,7 +22,7 @@ public class CheckoutTwoStepdefs {
 
     @Before
     public void setup(){
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
         webDriver = new ChromeDriver();
         webDriver.get("https://www.saucedemo.com");
         System.out.println("setup");

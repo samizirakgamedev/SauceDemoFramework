@@ -12,7 +12,7 @@ public class CartPage extends Page {
     private By cartItemPrice = new By.ByClassName("inventory_item_price");
     private By continueShopping = new By.ById("continue-shopping");
     private By checkout = new By.ById("checkout");
-    private By remove = new By.ById("remove-sauce-labs-backpack");
+    private By remove = new By.ByClassName("btn");
 
     public CartPage(WebDriver driver){
         super(driver);
