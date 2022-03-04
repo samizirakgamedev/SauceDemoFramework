@@ -47,8 +47,8 @@ public class InventoryItemPage extends Page {
         this.getDriver().findElement(backToProductsButton).click();
     }
 
-    public String getButtonName(){
-        return this.getDriver().findElement(addToCartOrRemoveButtons).getText();
+    public String getAddToCartOrRemoveButtonName(){
+        return this.getDriver().findElements(addToCartOrRemoveButtons).get(1).getText();
     }
 
     public String getShoppingCartBadge(){
