@@ -22,14 +22,6 @@ public class CheckoutCompleteStepdefs { //TODO keep social media checks in one f
     private CheckoutTwoPage checkoutTwoPage;
     private CheckoutCompletePage checkoutCompletePage;
 
-    @Before
-    public void setup(){
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
-        webDriver = new ChromeDriver();
-        webDriver.get("https://www.saucedemo.com");
-        System.out.println("setup");
-    }
-
     @Given("I am on the Checkout Complete page")
     public void iAmOnTheCheckoutCompletePage() {
         loginPage = new LoginPage(webDriver);
@@ -107,11 +99,5 @@ public class CheckoutCompleteStepdefs { //TODO keep social media checks in one f
     @And("The cart will be empty")
     public void theCartWillBeEmpty() {
         //Assertions.assertEquals(cartPage.isCartEmpty());
-    }
-
-    @After
-    public void tearDown(){
-        webDriver.quit();
-        System.out.println("tearDown");
     }
 }
