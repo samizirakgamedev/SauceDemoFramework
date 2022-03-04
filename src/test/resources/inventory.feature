@@ -177,3 +177,53 @@ Background: Setup the browser
       |4         |
       |5         |
 
+  @Inventory @InventoryAddToCart
+  Scenario Outline: Add product to the cart and the top right corner shows product amount
+    When I click <productID> add to cart or remove button
+    Then The cart icon show plus one product
+
+    Examples:
+      |productID |
+      |0         |
+      |1         |
+      |2         |
+      |3         |
+      |4         |
+      |5         |
+
+  @Inventory @InventoryAddToCart
+  Scenario: Add all product to the cart and the top right corner shows product amount
+    When I click all product add to cart or remove button
+    Then The cart icon shows all product amount
+
+  @Inventory @InventoryAddToCart
+  Scenario Outline: Click to the inventory page then add product to the cart
+    When I click the product image<image_index>
+    Then I get into the product information page
+    And I click add to cart or remove button in inventory page
+    Then The button in inventory page shows remove
+
+    Examples:
+      |image_index|
+      |0          |
+      |2          |
+      |4          |
+      |6          |
+      |8          |
+      |10         |
+
+  @Inventory
+    Scenario Outline: Click to inventory page then press back button
+      When I click the product image<image_index>
+      Then I get into the product information page
+      And I click back to products button
+      Then I get into the inventory page
+
+      Examples:
+        |image_index|
+        |0          |
+        |2          |
+        |4          |
+        |6          |
+        |8          |
+        |10         |
