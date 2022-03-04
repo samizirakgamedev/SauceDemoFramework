@@ -18,17 +18,14 @@ public class CartStepDefs {
     private LoginPage loginPage;
     private InventoryItemPage inventoryItemPage;
     private InventoryPage inventoryPage;
-    private CheckoutCompletePage checkoutCompletePage;
     private CheckoutOnePage checkoutOnePage;
-    private CheckoutTwoPage checkoutTwoPage;
+
 
     @Before
     public void setup() {
 
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
         webDriver = new ChromeDriver();
-        //cartPage = new CartPage(webDriver);
-        //more lines to be added (to log the user in), waiting for the POM classes to get completed
         webDriver.get("https://www.saucedemo.com");
         System.out.println("setup");
 
@@ -42,24 +39,30 @@ public class CartStepDefs {
         loginPage.clickLogInButton();
         inventoryPage = new InventoryPage(webDriver);
         inventoryPage.clickAddToCartOrRemoveButtonAtIndex(0);
+        inventoryPage.clickAddToCartOrRemoveButtonAtIndex(1);
+        inventoryPage.clickAddToCartOrRemoveButtonAtIndex(2);
         inventoryPage.clickCartIcon();
 
     }
     
-    @When("I click on the image or title of the product")
-    public void clickOnTheImageOrTitleOfProduct() {
-        cartPage.clickItemAtIndex(4);
+    @When("I click on the  title of the product")
+    public void clickOnTheTitleOfProduct() {
+        cartPage = new CartPage(webDriver);
+        cartPage.clickItemAtIndex(2);
 
     }
 
     @Then("I will go to the inventory item page of that product")
         public void iWillClickOnItAndTakeMeToTheInventoryItemPage() {
-        Assertions.assertEquals("https://www.saucedemo.com/inventory-item.html?id=4", inventoryItemPage.getCurrentURL());
+        inventoryItemPage = new InventoryItemPage(webDriver);
+        Assertions.assertEquals("https://www.saucedemo.com/inventory-item.html?id=2", inventoryItemPage.getCurrentURL());
 
     }
 
+    //CONTINUE SHOPPING
     @When("I click on 'continue shopping' in cart page")
     public void clickOnContinueShoppingInCartPage() {
+        cartPage = new CartPage(webDriver);
         cartPage.clickContinueShoppingButton();
 
     }
@@ -69,93 +72,42 @@ public class CartStepDefs {
         Assertions.assertEquals("https://www.saucedemo.com/inventory.html", inventoryPage.getCurrentURL());
     }
 
+    //CHECKOUT
     @When("I click on 'Checkout' in cart page")
         public void clickOnCheckoutInCartPage() {
+        cartPage = new CartPage(webDriver);
         cartPage.clickCheckoutButton();
     }
 
     @Then("I will go the 'checkout step one' page")
     public void iWillGoToTheCheckoutStepOnePage() {
+        checkoutOnePage = new CheckoutOnePage(webDriver);
         Assertions.assertEquals("https://www.saucedemo.com/checkout-step-one.html", checkoutOnePage.getCurrentURL());
     }
 
+
     @When("An item is displayed inside the cart")
     public void itemDisplayedInsideTheCart() {
-        cartPage.clickRemoveItemAtIndex(1);
+        cartPage = new CartPage(webDriver);
 
     }
 
     @Then("I will have an option to remove that item from the cart")
     public void removeTheItemFromTheCart() {
-        cartPage.clickRemoveItemAtIndex(1);
-        //  Assertions.assertEquals("https://www.saucedemo.com/cart.html", cartPage.clickRemoveItemAtIndex(1))
+     // Assertions.assertEquals("https://www.saucedemo.com/cart.html", cartPage.clickRemoveItemAtIndex(1));
 
     }
-
+    
     @When("An item is displayed in the cart page")
     public void itemDisplayedInsideTheCart1() {
-        cartPage.getItemPriceAtIndex(15);
+        cartPage = new CartPage(webDriver);
+        cartPage.getItemPriceAtIndex(0);
 
     }
 
     @Then("I will see the price of the product")
     public void iWillSeeThePriceOfTheProduct() {
-        // Assertions.assertEquals("https://www.saucedemo.com/cart.html", Cartpage.getURL());
-
-    }
-
-    //Twitter
-    @When("When I click on the Twitter icon")
-    public void clickOnTheTwitterIcon() {
-        cartPage = new CartPage(webDriver);
-        cartPage.clickTwitterIcon();
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    @Then("I will go to the Twitter page")
-    public void iWillGoToTheTwitterPage() {
-        Assertions.assertEquals("https://twitter.com/saucelabs", webDriver.switchTo().window(new ArrayList<>(webDriver.getWindowHandles()).get(1)).getCurrentUrl());
-
-    }
-
-    //Facebook
-    @When("When I click on the Facebook icon")
-    public void clickOnTheFacebookIcon() {
-        cartPage = new CartPage(webDriver);
-        cartPage.clickFacebookIcon();
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Then("I will go to the Facebook page")
-    public void iWillGoToTheFacebookPage() {
-        Assertions.assertEquals("https://www.facebook.com/saucelabs", webDriver.switchTo().window(new ArrayList<>(webDriver.getWindowHandles()).get(1)).getCurrentUrl());
-
-    }
-
-   //Linkedin
-    @When("When I click on the Linkedin icon")
-    public void clickOnTheLinkedinIcon() {
-        cartPage = new CartPage(webDriver);
-        cartPage.clickLinkedinIcon();
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Then("I will go to the Linkedin page")
-    public void iWillGoToTheLinkedinPage() {
-        Assertions.assertEquals("https://www.linkedin.com/company/sauce-labs/", webDriver.switchTo().window(new ArrayList<>(webDriver.getWindowHandles()).get(1)).getCurrentUrl());
+        Assertions.assertEquals("$29.99", cartPage.getItemPriceAtIndex(0));
     }
 
     @After
