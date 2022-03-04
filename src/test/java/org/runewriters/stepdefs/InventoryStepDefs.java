@@ -19,6 +19,7 @@ import org.runewriters.pom.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.concurrent.TimeUnit;
 
 public class InventoryStepDefs {
 
@@ -46,6 +47,7 @@ public class InventoryStepDefs {
         loginPage.enterUsername("standard_user");
         loginPage.enterPassword("secret_sauce");
         loginPage.clickLogInButton();
+        webDriver.manage().timeouts().pageLoadTimeout(3,TimeUnit.SECONDS);
         inventoryPage = new InventoryPage(webDriver);
     }
 
@@ -170,19 +172,62 @@ public class InventoryStepDefs {
         inventoryPage.clickAddToCartOrRemoveButtonAtIndex(i);
     }
 
-//    @Then("{int} button shows remove")
-//    public void buttonShowsRemove(int i){
-//        Assertions.assertEquals("REMOVE",inventoryPage.getAddToCartOrRemoveButtonAtIndexText(i));
-//    }
+    @Then("{int} button shows remove")
+    public void buttonShowsRemove(int i){
+       Assertions.assertEquals("REMOVE",inventoryPage.getButtonNameAtIndex(i));
+   }
 
-//    @Then("{int} button shows add to chart")
-//    public void buttonShowsAddToChart(int i){
-//        Assertions.assertEquals("ADD TO CART",inventoryPage.getAddToCartOrRemoveButtonAtIndexText(i));
-//    }
+    @Then("{int} button shows add to chart")
+    public void buttonShowsAddToChart(int i){
+        Assertions.assertEquals("ADD TO CART",inventoryPage.getButtonNameAtIndex(i));
+    }
+
+    @And("I click add to cart or remove button in inventory page")
+    public void iClickIntAddToCartOrRemoveButtonInInventoryPage(){
+        inventoryItemPage.clickAddToCartOrRemoveButton();
+    }
+
+    @Then("The button in inventory page shows remove")
+    public void theButtonInInventoryPageShowsRemove(){
+        Assertions.assertEquals("REMOVE",inventoryItemPage.getAddToCartOrRemoveButtonName());
+    }
+
+    @And("I click back to products button")
+    public void iClickBackToProductsButton(){
+        inventoryItemPage.clickBackToProductsButton();
+    }
+
+
+    @Then("I get into the inventory page")
+    public void iGetIntoTheInventoryPage(){
+        Assertions.assertEquals("https://www.saucedemo.com/inventory.html", inventoryPage.getCurrentURL());
+    }
+
+    @When("I click {int} add to cart or remove button")
+    public void iClickAddToCartOrRemoveButton(int i ){
+        inventoryPage.clickAddToCartOrRemoveButtonAtIndex(i);
+    }
+
+    @Then("The cart icon show plus one product")
+    public void theCartIconSHowPlusOneProduct(){
+        Assertions.assertEquals("1",inventoryPage.getShoppingCartBadge());
+    }
+
+    @When("I click all product add to cart or remove button")
+    public void whenIClickAllProductAddToCartOrRemoveButton(){
+        for(int i =0; i <6;i++){
+            inventoryPage.clickAddToCartOrRemoveButtonAtIndex(i);
+        }
+    }
+
+    @Then("The cart icon shows all product amount")
+    public void theCartIconShowsAllProductAmount(){
+        Assertions.assertEquals("6",inventoryPage.getShoppingCartBadge());
+    }
 
     @After
     public void tearDown(){
-       webDriver.quit();
+      webDriver.quit();
     }
 
 }
