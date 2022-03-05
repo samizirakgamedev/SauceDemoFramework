@@ -3,8 +3,12 @@ package org.runewriters.pom;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+/**
+ * A class that represents the inventory item page in the Sauce Demo website
+ */
 public class InventoryItemPage extends Page {
 
+    // Accessing the web elements from the inventory item page that could be useful for the testers
     private By itemImage = new By.ByClassName("inventory_details_img");
     private By itemName = new By.ByClassName("inventory_details_name");
     private By itemDescription = new By.ByClassName("inventory_details_desc");
@@ -17,35 +21,97 @@ public class InventoryItemPage extends Page {
         super(webDriver);
     }
 
-    public String getItemName(){
-        return this.getDriver().findElement(itemName).getText();
+    /**
+     * Method for returning the current item selected in the inventory item page
+     */
+    public String getItemName() {
+        try {
+            return this.getDriver().findElement(itemName).getText();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
-    public String getItemImageSource(){
-        return this.getDriver().findElement(itemImage).getAttribute("source");
+    /**
+     * Method for getting the source of the image of the current item selected in the inventory item page
+     */
+    public String getItemImageSource() {
+        try {
+            return this.getDriver().findElement(itemImage).getAttribute("source");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
-    public String getItemDescription(){
-        return this.getDriver().findElement(itemDescription).getText();
+    /**
+     * Method for getting the description of the current item selected in the inventory item page
+     */
+    public String getItemDescription() {
+        try {
+            return this.getDriver().findElement(itemDescription).getText();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
-    public String getItemPrice(){
-        return this.getDriver().findElement(itemPrice).getText();
+    /**
+     * Method for getting the price of the current item selected in the inventory item page
+     */
+    public String getItemPrice() {
+        try {
+            return this.getDriver().findElement(itemPrice).getText();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
-    public void clickAddToCartOrRemoveButton(){
-        this.getDriver().findElements(inventoryPageButtons).get(1).click();
+    /**
+     * Method for clicking the add to cart or remove from cart button depending on its current state
+     */
+    public void clickAddToCartOrRemoveButton() {
+        try {
+            this.getDriver().findElements(inventoryPageButtons).get(1).click();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    public void clickBackToProductsButton(){
-        this.getDriver().findElement(backToProductsButton).click();
+    /**
+     * Method for clicking the back to products button so users can go back to the all items page
+     */
+    public void clickBackToProductsButton() {
+        try {
+            this.getDriver().findElement(backToProductsButton).click();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    public String getAddToCartOrRemoveButtonName(){
-        return this.getDriver().findElements(inventoryPageButtons).get(1).getText();
+    /**
+     * Method for returning the name of the current state of the button
+     */
+    public String getAddToCartOrRemoveButtonName() {
+        try {
+            return this.getDriver().findElements(inventoryPageButtons).get(1).getText();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
-    public String getShoppingCartBadge(){
-        return this.getDriver().findElement(shoppingCartBade).getText();
+    /**
+     * Method for getting the number in shopping cart badge
+     */
+    public String getShoppingCartBadge() {
+        try {
+            return this.getDriver().findElement(shoppingCartBade).getText();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
