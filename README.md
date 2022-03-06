@@ -144,7 +144,9 @@ Throughout the project we made use of multiple project management tools includin
 
 * GitHub, GitHub Desktop and Sourcetree for version control.
 * Trello for sprint and task management.
-* Microsoft Teams and Discord for collaborative working and meetings. Bellow is a commit graph showing the commit history of the project:
+* Microsoft Teams and Discord for collaborative working and meetings. 
+
+Bellow is a commit graph showing the commit history of the project:
 
 ![ezgif-2-7aac678c08](https://user-images.githubusercontent.com/98159233/156947577-7ea11d46-1e25-4334-ba63-ac536311608f.gif)
 
