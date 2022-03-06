@@ -5,6 +5,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.runewriters.pom.InventoryPage;
@@ -22,6 +23,7 @@ public class LoginStepDefs {
     public void setUps(){
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         webDriver = new ChromeDriver();
+        loginPage = new LoginPage(webDriver);
     }
 
     @Given("I am on the Login Page")
@@ -29,11 +31,10 @@ public class LoginStepDefs {
         webDriver.get("https://www.saucedemo.com");
     }
 
-    @When("I insert {string} and {string}")
-    public void iInsertUsernameAnd(String username, String password) {
-        loginPage = new LoginPage(webDriver);
+    @When("I insert {string} and secret_sauce")
+    public void iInsertUsernameAndSecret_sauce(String username) {
         loginPage.enterUsername(username);
-        loginPage.enterPassword(password);
+        loginPage.enterPassword("secret_sauce");
     }
 
     @And("I click on the login button")
@@ -43,17 +44,17 @@ public class LoginStepDefs {
 
     @Then("I will go to the InventoryPage")
     public void iWillGoToTheInventoryPage() {
-        webDriver.manage().timeouts().pageLoadTimeout(3, TimeUnit.SECONDS);
+        webDriver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
         inventoryPage = new InventoryPage(webDriver);
     }
 
-    @When("I insert an invalid username")
+    @When("I insert an invalid username and a valid password")
     public void iInsertAnInvalidUsername() {
         loginPage.enterUsername("locked_out_user");
         loginPage.enterPassword("secret_sauce");
     }
 
-    @When("I insert an invalid password")
+    @When("I insert a valid username and an invalid password")
     public void iInsertAnInvalidPassword() {
         loginPage.enterUsername("standard_user");
         loginPage.enterPassword("12345");
@@ -61,5 +62,6 @@ public class LoginStepDefs {
 
     @Then("I will stay in the Login Page")
     public void iWillStayInTheLoginPage() {
+        Assertions.assertTrue( "https://www.saucedemo.com".equals(webDriver.getCurrentUrl()) || "https://www.saucedemo.com/".equals(webDriver.getCurrentUrl()));
     }
 }
