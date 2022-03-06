@@ -162,6 +162,31 @@ Our trello was also updated throughout our project to reflect the completion of 
 
 ### Testing Framework ###
 
+**JUnit Automatic Testing**:
+
+JUnit Testing is a series of automatic tests that can be designed in a method that is easy to understand, a third party 
+user should also be able to create and use tests using the same format. JUnit Testing was used in this project two check 
+if the expected results matched with the actual outcome of the user stories through *Assertions*.
+
+**User Stories - Cucumber**:
+
+This framework is based on the idea of BDD. This describes a series of scenarios that a user might follow to reach a 
+specific part of the website. This is very useful for both, technical and non-technical people.
+
+The framework processed different feature files. The results are displayed in the next table:
+
+| Test Type         | Test Results |
+|-------------------|:------------:|
+| Login             |              |
+| Inventory         |              |
+| Cart              |              |
+| Checkout 1        |              |
+| Checkout 2        |              |
+| Checkout Complete |              |
+| Twitter           |              |
+| Facebook          |              |
+| LinkedIn          |              |
+
 <br/>
 <div align="right">
     <b><a href="#sauce-demo-framework">↥ back to top</a></b>
