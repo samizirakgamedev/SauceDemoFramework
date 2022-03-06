@@ -1,19 +1,17 @@
 package org.runewriters.stepdefs;
 
+import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.After;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.runewriters.pom.*;
 
-import java.util.ArrayList;
-
 public class CartStepDefs {
-    private WebDriver webDriver;
+    private static WebDriver webDriver;
     private CartPage cartPage;
     private LoginPage loginPage;
     private InventoryItemPage inventoryItemPage;
@@ -23,16 +21,15 @@ public class CartStepDefs {
 
     @Before
     public void setup() {
-
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
-        webDriver = new ChromeDriver();
-        webDriver.get("https://www.saucedemo.com");
         System.out.println("setup");
-
     }
 
     @Given("I am on the cart page")
     public void iAmOnTheCartPage() {
+        webDriver = new ChromeDriver();
+        webDriver.get("https://www.saucedemo.com");
+
         loginPage = new LoginPage(webDriver);
         loginPage.enterUsername("standard_user");
         loginPage.enterPassword("secret_sauce");
@@ -42,21 +39,18 @@ public class CartStepDefs {
         inventoryPage.clickAddToCartOrRemoveButtonAtIndex(1);
         inventoryPage.clickAddToCartOrRemoveButtonAtIndex(2);
         inventoryPage.clickCartIcon();
-
     }
     
     @When("I click on the  title of the product")
     public void clickOnTheTitleOfProduct() {
         cartPage = new CartPage(webDriver);
         cartPage.clickItemAtIndex(2);
-
     }
 
     @Then("I will go to the inventory item page of that product")
         public void iWillClickOnItAndTakeMeToTheInventoryItemPage() {
         inventoryItemPage = new InventoryItemPage(webDriver);
-        Assertions.assertEquals("https://www.saucedemo.com/inventory-item.html?id=2", inventoryItemPage.getCurrentURL());
-
+        Assertions.assertEquals("https://www.saucedemo.com/inventory-item.html?id=1", inventoryItemPage.getCurrentURL());
     }
 
     //CONTINUE SHOPPING
@@ -96,14 +90,12 @@ public class CartStepDefs {
     public void removeTheItemFromTheCart() {
         cartPage.clickRemoveItemAtIndex(2);
         Assertions.assertEquals(2,cartPage.getCartSize());
-
     }
 
     @When("An item is displayed in the cart page")
     public void itemDisplayedInsideTheCart1() {
         cartPage = new CartPage(webDriver);
         cartPage.getItemPriceAtIndex(0);
-
     }
 
     @Then("I will see the price of the product")
@@ -112,8 +104,10 @@ public class CartStepDefs {
     }
 
     @After
-    public void tearDown() {
-        webDriver.quit();
-        System.out.println("tearDown");
+    public static void tearDown() {
+        if(webDriver != null) {
+            webDriver.quit();
+            System.out.println("tearDown c");
+        }
     }
 }

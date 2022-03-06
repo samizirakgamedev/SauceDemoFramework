@@ -1,23 +1,18 @@
 package org.runewriters.stepdefs;
 
-
 import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.java.sl.In;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Assumptions;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.runewriters.pom.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.concurrent.TimeUnit;
 
@@ -34,15 +29,11 @@ public class InventoryStepDefs {
     private String imageSource;
     private String productDescription;
 
-    @Before
-    public void setUps(){
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
-        webDriver = new ChromeDriver();
-        webDriver.get("https://www.saucedemo.com");
-    }
-
     @Given("I am in inventory page")
     public void iAmInInventoryPage(){
+        webDriver = new ChromeDriver();
+        webDriver.get("https://www.saucedemo.com");
+
         loginPage = new LoginPage(webDriver);
         loginPage.enterUsername("standard_user");
         loginPage.enterPassword("secret_sauce");
@@ -133,7 +124,7 @@ public class InventoryStepDefs {
 
     @When("I select sort price low to high from the dropdown list")
     public void iSelectSortPriceLowToHighFromTheDropdownList(){
-        inventoryPage.filterPageByPrizeLowToHigh();
+        inventoryPage.filterPageByPriceLowToHigh();
     }
 
     @When("I select sort price high to low from the dropdown list")
@@ -227,7 +218,9 @@ public class InventoryStepDefs {
 
     @After
     public void tearDown(){
-      webDriver.quit();
+        if(webDriver != null){
+            webDriver.quit();
+            System.out.println("tearDown i");
+        }
     }
-
 }

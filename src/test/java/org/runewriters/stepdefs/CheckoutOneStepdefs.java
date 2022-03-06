@@ -1,7 +1,6 @@
 package org.runewriters.stepdefs;
 
 import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -10,7 +9,6 @@ import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.runewriters.pom.*;
-import java.util.ArrayList;
 
 public class CheckoutOneStepdefs {
 
@@ -21,16 +19,12 @@ public class CheckoutOneStepdefs {
     private CheckoutOnePage checkoutOnePage;
     private CheckoutTwoPage checkoutTwoPage;
 
-    @Before
-    public void setup(){
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
-        webDriver = new ChromeDriver();
-        webDriver.get("https://www.saucedemo.com");
-        System.out.println("setup");
-    }
 
     @Given("I am on the Checkout One page")
     public void iAmOnTheCheckoutOnePage() {
+        webDriver = new ChromeDriver();
+        webDriver.get("https://www.saucedemo.com");
+
         loginPage = new LoginPage(webDriver);
         loginPage.enterUsername("standard_user");
         loginPage.enterPassword("secret_sauce");
@@ -91,54 +85,6 @@ public class CheckoutOneStepdefs {
         Assertions.assertEquals("https://www.saucedemo.com/inventory.html", inventory.getCurrentURL());
     }
 
-    @When("I click on Twitter icon")
-    public void iClickOnTwitterIcon() {
-        checkoutOnePage = new CheckoutOnePage(webDriver);
-        checkoutOnePage.clickTwitterIcon();
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Then("I will go to the Twitter page")
-    public void iWillGoToTheTwitterPage() {
-        Assertions.assertEquals("https://twitter.com/saucelabs", webDriver.switchTo().window(new ArrayList<>(webDriver.getWindowHandles()).get(1)).getCurrentUrl());
-    }
-
-    @When("I click on Facebook icon")
-    public void iClickOnFacebookIcon() {
-        checkoutOnePage = new CheckoutOnePage(webDriver);
-        checkoutOnePage.clickFacebookIcon();
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Then("I will go to the Facebook page")
-    public void iWillGoToTheFacebookPage() {
-        Assertions.assertEquals("https://www.facebook.com/saucelabs", webDriver.switchTo().window(new ArrayList<>(webDriver.getWindowHandles()).get(1)).getCurrentUrl());
-    }
-
-    @When("I click on Linkedin icon")
-    public void iClickOnLinkedinIcon() {
-        checkoutOnePage = new CheckoutOnePage(webDriver);
-        checkoutOnePage.clickLinkedinIcon();
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Then("I will go to the Linkedin page")
-    public void iWillGoToTheLinkedinPage() {
-        Assertions.assertEquals("https://www.linkedin.com/company/sauce-labs/", webDriver.switchTo().window(new ArrayList<>(webDriver.getWindowHandles()).get(1)).getCurrentUrl());
-    }
-
     @Then("I will go to the Side bar")
     public void iWillGoToTheSideBar() {
         //Assertions.assertEquals(checkoutOnePage.isSideBarPresent());
@@ -151,7 +97,9 @@ public class CheckoutOneStepdefs {
     }
     @After
     public void tearDown(){
-        webDriver.quit();
-        System.out.println("tearDown");
+        if(webDriver != null){
+            webDriver.quit();
+        System.out.println("tearDown co");
+        }
     }
 }
