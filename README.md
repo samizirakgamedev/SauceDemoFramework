@@ -15,7 +15,7 @@
 >
 > • Suyash Srivastava - Junior Java SDET Consultant | [GitHub](https://github.com/SuyashsGit) | [LinkedIn](https://www.linkedin.com/in/suyash-srivastava-0a977a15a/) |
 >
-> • Ben Wong - Junior Java SDET Consultant | [GitHub](https://github.com/BwongmcST) | 
+> • Ben Wong - Junior Java SDET Consultant | [GitHub](https://github.com/BwongmcST) | [LinkedIn](https://discord.com/channels/932614899165700126/948513533979676692/948581808281387079) |
 >
 A testing framework for https://www.saucedemo.com/ using Selinium. This project is part of our ongoing training @ [Sparta Global](https://www.spartaglobal.com/).
 ### Table Of Contents ###
@@ -83,6 +83,92 @@ A testing framework for https://www.saucedemo.com/ using Selinium. This project 
         <version>7.2.3</version>
     </dependency>
 ```
+<br/>
+<div align="right">
+    <b><a href="#sauce-demo-framework">↥ back to top</a></b>
+</div>
+<br/>
+
+### How to use ###
+
+1. Navigate to the top of this GitHub repo and click the green **Code** button. This will open a menu where you will want to click **Download Zip**.
+   <img src="readmeImages/HowToUse1.png"/>
+2. Having clicked **Download ZIP** a **Show In Folder** dialogue box will open. Choose where you want to store the compressed Sauce Demo Framework program and then click the **Save** button.
+   <img src="readmeImages/HowToUse2.png"/>
+3. Using Windows Explorer navigate to the location you saved the compressed Sauce Demo Framework program in. Right-click on the program and select **Extract All**.
+   <img src="readmeImages/HowToUse3.png"/>
+4. Open IntelliJ Community Edition and click **File** and then **Open**. Navigate to the extracted Sauce Demo Framework program project folder and select it. Then click **Ok**.
+   <img src="readmeImages/HowToUse4.png"/>
+5. This project doesn't include the Web Drivers for the different browsers, so, be aware of downloading and place them into the right folder. The standard folder path used for this project is **src/test/resources/{webDriver_file_name}"**
+
+6. Once the project has opened and all dependencies have been downloaded look to the top right-hand corner of IntelliJ and ensure that the class that has been set to run is **TestRunner**. This will allow you to run all *features* files in one go. You can now run the program by clicking the green play button.
+
+
+<br/>
+<div align="right">
+    <b><a href="#sauce-demo-framework">↥ back to top</a></b>
+</div>
+<br/>
+
+### Project Scope ###
+
+The framework worked under the [Project Object Model](https://en.wikipedia.org/wiki/Apache_Maven#Project_Object_Model),
+which provides all the configuration for a single project:
+* **POM**: Classes that represent the methods with different behaviours in each web page.
+* **Step Defs**: The actual tests based in BDD. This is backside of the user stories.
+* **Web Drivers**: Drivers that allows you to test the *feature* files in different browsers.
+* **Feature Files**: Files that represent the user stories adapted to BDD. Each scenario represents an user
+behaviour on the website through different web pages.
+
+<br/>
+<div align="right">
+    <b><a href="#sauce-demo-framework">↥ back to top</a></b>
+</div>
+<br/>
+
+### Project Management ###
+
+Throughout the project we made use of multiple project management tools including:
+
+* GitHub, GitHub Desktop and Sourcetree for version control.
+* Trello for sprint and task management.
+* Microsoft Teams and Discord for collaborative working and meetings. Bellow is a commit graph showing the commit history of the project:
+
+(MISSING COMMIT GRAPH GIF)
+
+We each branched off and worked on our separate tasks and would then merge together to update each of our branches with an up-to-date version of the project. On the last day of the project we branched off less and merged in more frequently to refactor,make final updates and fix bugs.
+
+Our trello was also updated throughout our project to reflect the completion of deadlines and the completion of sprints and tests.
+
+<img src="readmeImages/Trello2.png"/>
+
+<br/>
+<div align="right">
+    <b><a href="#sauce-demo-framework">↥ back to top</a></b>
+</div>
+<br/>
+
+### Testing Framework ###
+
+<br/>
+<div align="right">
+    <b><a href="#sauce-demo-framework">↥ back to top</a></b>
+</div>
+<br/>
+
+### Outcomes and Future Work ###
+
+After testing the website, the team found that some improvements that could be made on the website from the perspective
+of the users. These improvements were:
+
+* [Regex](https://en.wikipedia.org/wiki/Regular_expression) user input validation. For example, checking if the user's 
+first and last name are only alphabetic characters.
+* Ability to change product quantity of an item in the cart (From different pages in the website such as the inventory, 
+cart and checkout page).
+* The mouse cursor should change when hovering the cart icon to indicate that it is clickable (like other page icons do).
+* Don’t allow users to check out without an item in the cart.
+
+
 <br/>
 <div align="right">
     <b><a href="#sauce-demo-framework">↥ back to top</a></b>
