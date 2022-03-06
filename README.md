@@ -99,9 +99,10 @@ A testing framework for https://www.saucedemo.com/ using Selinium. This project 
    <img src="readmeImages/HowToUse3.png"/>
 4. Open IntelliJ Community Edition and click **File** and then **Open**. Navigate to the extracted Sauce Demo Framework program project folder and select it. Then click **Ok**.
    <img src="readmeImages/HowToUse4.png"/>
-5. This project doesn't include the Web Drivers for the different browsers, so, be aware of downloading and place them into the right folder. The standard folder path used for this project is **src/test/resources/{webDriver_file_name}"**
-
-6. Once the project has opened and all dependencies have been downloaded look to the top right-hand corner of IntelliJ and ensure that the class that has been set to run is **TestRunner**. This will allow you to run all *features* files in one go. You can now run the program by clicking the green play button.
+5. This project doesn't include the Web Drivers for the different browsers, so, you must download and place them into the right folder. The standard folder path used for this project is **src/test/resources/{webDriver_file_name}"**. In this example is shown **ChromeDriver.exe** as web driver used.
+   <img src="readmeImages/HowToUse5.png"/>
+6. Once the project has opened and all dependencies have been downloaded you must run the **TestRunner** file. This file should be in **src/test/java/org/runewriters/stepdefs**. This will allow you to run all *features* files in one go. You can now run the program by clicking the green play button.
+   <img src="readmeImages/HowToUse6.png"/>
 
 
 <br/>
