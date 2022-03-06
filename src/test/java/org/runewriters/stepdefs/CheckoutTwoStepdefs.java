@@ -1,7 +1,6 @@
 package org.runewriters.stepdefs;
 
 import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -13,23 +12,18 @@ import org.runewriters.pom.*;
 public class CheckoutTwoStepdefs {
 
     private LoginPage loginPage;
-    private WebDriver webDriver;
+    private static WebDriver webDriver;
     private InventoryPage inventory;
     private CartPage cartPage;
     private CheckoutOnePage checkoutOnePage;
     private CheckoutTwoPage checkoutTwoPage;
     private CheckoutCompletePage checkoutCompletePage;
 
-    @Before
-    public void setup(){
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
-        webDriver = new ChromeDriver();
-        webDriver.get("https://www.saucedemo.com");
-        System.out.println("setup");
-    }
-
     @Given("I am on the Checkout Two page")
     public void iAmOnTheCheckoutTwoPage() {
+        webDriver = new ChromeDriver();
+        webDriver.get("https://www.saucedemo.com");
+
         loginPage = new LoginPage(webDriver);
         loginPage.enterUsername("standard_user");
         loginPage.enterPassword("secret_sauce");
@@ -81,8 +75,10 @@ public class CheckoutTwoStepdefs {
     }
 
     @After
-    public void tearDown(){
-        webDriver.quit();
-        System.out.println("tearDown");
+    public static void tearDown(){
+        if(webDriver != null){
+            webDriver.quit();
+            System.out.println("tearDown ct");
+        }
     }
 }

@@ -21,15 +21,3 @@ Feature: Able to provide the personal details and navigate to different pages on
     Scenario: Getting to the Side bar from the Checkout One page
       When I click on Side bar icon
       Then I will go to the Side bar
-
-    Scenario: Getting to the Twitter page from the Checkout One page
-      When I click on Twitter icon
-      Then I will go to the Twitter page
-
-    Scenario: Getting to the Facebook page from the Checkout One page
-      When I click on Facebook icon
-      Then I will go to the Facebook page
-
-    Scenario: Getting to the Linkedin page from the Checkout One page
-      When I click on Linkedin icon
-      Then I will go to the Linkedin page
