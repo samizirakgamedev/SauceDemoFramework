@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
         plugin = {"pretty","html:target/testReport.html", "json:target/jsonReport.json"},
         //tags can be used to run tests for different type of users
         //one user at a time
-        tags = "@user1",
+        //tags = "@user1",
         publish = true
 )
 public class TestRunner { }

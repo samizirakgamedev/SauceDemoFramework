@@ -24,7 +24,7 @@ public class CheckoutCompleteStepdefs { //TODO keep social media checks in one f
 
     @Before
     public void setup(){
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
         webDriver = new ChromeDriver();
         webDriver.get("https://www.saucedemo.com");
         System.out.println("setup");
@@ -107,6 +107,21 @@ public class CheckoutCompleteStepdefs { //TODO keep social media checks in one f
     @And("The cart will be empty")
     public void theCartWillBeEmpty() {
         //Assertions.assertEquals(cartPage.isCartEmpty());
+    }
+    @When("I click on Linkedin Icon")
+    public void iClickOnLinkedinIcon() {
+        checkoutCompletePage = new CheckoutCompletePage(webDriver);
+        checkoutCompletePage.clickLinkedinIcon();
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Then("I will go to the Linkedin Page")
+    public void iWillGoToTheLinkedinPage() {
+        Assertions.assertEquals("https://www.linkedin.com/company/sauce-labs/", webDriver.switchTo().window(new ArrayList<>(webDriver.getWindowHandles()).get(1)).getCurrentUrl());
     }
 
     @After
