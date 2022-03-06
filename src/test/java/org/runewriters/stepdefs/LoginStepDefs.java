@@ -1,6 +1,6 @@
 package org.runewriters.stepdefs;
 
-import io.cucumber.java.Before;
+import io.cucumber.java.After;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -19,16 +19,11 @@ public class LoginStepDefs {
     private LoginPage loginPage;
     private InventoryPage inventoryPage;
 
-    @Before
-    public void setUps(){
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
-        webDriver = new ChromeDriver();
-        loginPage = new LoginPage(webDriver);
-    }
-
     @Given("I am on the Login Page")
     public void iAmOnTheLoginPage() {
+        webDriver = new ChromeDriver();
         webDriver.get("https://www.saucedemo.com");
+        loginPage = new LoginPage(webDriver);
     }
 
     @When("I insert {string} and secret_sauce")
@@ -64,4 +59,13 @@ public class LoginStepDefs {
     public void iWillStayInTheLoginPage() {
         Assertions.assertTrue( "https://www.saucedemo.com".equals(webDriver.getCurrentUrl()) || "https://www.saucedemo.com/".equals(webDriver.getCurrentUrl()));
     }
+
+    @After
+    public void tearDown(){
+        if(webDriver != null){
+            webDriver.quit();
+            System.out.println("tearDown lg");
+        }
+    }
+
 }
