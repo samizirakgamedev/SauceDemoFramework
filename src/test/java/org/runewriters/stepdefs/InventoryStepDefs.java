@@ -133,7 +133,7 @@ public class InventoryStepDefs {
 
     @When("I select sort price low to high from the dropdown list")
     public void iSelectSortPriceLowToHighFromTheDropdownList(){
-        inventoryPage.filterPageByPrizeLowToHigh();
+        inventoryPage.filterPageByPriceLowToHigh();
     }
 
     @When("I select sort price high to low from the dropdown list")

@@ -24,7 +24,7 @@ public class CartStepDefs {
     @Before
     public void setup() {
 
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         webDriver = new ChromeDriver();
         webDriver.get("https://www.saucedemo.com");
         System.out.println("setup");
@@ -44,7 +44,7 @@ public class CartStepDefs {
         inventoryPage.clickCartIcon();
 
     }
-    
+
     @When("I click on the  title of the product")
     public void clickOnTheTitleOfProduct() {
         cartPage = new CartPage(webDriver);
@@ -55,7 +55,7 @@ public class CartStepDefs {
     @Then("I will go to the inventory item page of that product")
         public void iWillClickOnItAndTakeMeToTheInventoryItemPage() {
         inventoryItemPage = new InventoryItemPage(webDriver);
-        Assertions.assertEquals("https://www.saucedemo.com/inventory-item.html?id=2", inventoryItemPage.getCurrentURL());
+        Assertions.assertEquals("https://www.saucedemo.com/inventory-item.html?id=1", inventoryItemPage.getCurrentURL());
 
     }
 
