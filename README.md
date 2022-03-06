@@ -146,7 +146,7 @@ Throughout the project we made use of multiple project management tools includin
 * Trello for sprint and task management.
 * Microsoft Teams and Discord for collaborative working and meetings. Bellow is a commit graph showing the commit history of the project:
 
-<img src="https://cdn.discordapp.com/attachments/935470190127353868/950176097344053258/idea64_yBop51ruFC.mp4"/>
+![ezgif-2-7aac678c08](https://user-images.githubusercontent.com/98159233/156947577-7ea11d46-1e25-4334-ba63-ac536311608f.gif)
 
 We each branched off and worked on our separate tasks and would then merge together to update each of our branches with an up-to-date version of the project. On the last day of the project we branched off less and merged in more frequently to refactor,make final updates and fix bugs.
 
