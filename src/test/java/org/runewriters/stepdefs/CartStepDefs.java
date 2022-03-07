@@ -7,11 +7,14 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.runewriters.pom.*;
+import org.runewriters.webdrivers.WebDriverFactory;
+import org.runewriters.webdrivers.model.WebDriverManager;
+import org.runewriters.webdrivers.model.WebDriverType;
 
 public class CartStepDefs {
     private static WebDriver webDriver;
+    private static WebDriverManager manager;
     private CartPage cartPage;
     private LoginPage loginPage;
     private InventoryItemPage inventoryItemPage;
@@ -21,13 +24,14 @@ public class CartStepDefs {
 
     @Before
     public void setup() {
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         System.out.println("setup");
     }
 
     @Given("I am on the cart page")
     public void iAmOnTheCartPage() {
-        webDriver = new ChromeDriver();
+        manager = WebDriverFactory.getManager(WebDriverType.CHROME);
+        webDriver = manager.getDriver();
         webDriver.get("https://www.saucedemo.com");
 
         loginPage = new LoginPage(webDriver);
@@ -106,7 +110,7 @@ public class CartStepDefs {
     @After
     public static void tearDown() {
         if(webDriver != null) {
-            webDriver.quit();
+            manager.quitDriver();
             System.out.println("tearDown c");
         }
     }

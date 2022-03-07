@@ -6,24 +6,26 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeDriverService;
 import org.runewriters.pom.InventoryPage;
 import org.runewriters.pom.LoginPage;
+import org.runewriters.webdrivers.WebDriverFactory;
+import org.runewriters.webdrivers.model.WebDriverManager;
+import org.runewriters.webdrivers.model.WebDriverType;
 
 import java.time.Duration;
 import java.util.ArrayList;
 
 public class LinkedinStepdefs {
 
-    private WebDriver webDriver;
-    private static ChromeDriverService service;
+    private static WebDriver webDriver;
+    private static WebDriverManager manager;
     private LoginPage loginPage;
     private InventoryPage inventoryPage;
 
     @Given("I am on the INVENTOry page")
     public void iAmOnTheINVENTOryPage() {
-        webDriver = new ChromeDriver();
+        manager = WebDriverFactory.getManager(WebDriverType.CHROME);
+        webDriver = manager.getDriver();
         webDriver.get("https://www.saucedemo.com");
 
         loginPage = new LoginPage(webDriver);
@@ -48,8 +50,8 @@ public class LinkedinStepdefs {
     @After
     public void tearDown(){
         if(webDriver != null){
-        webDriver.quit();
-        System.out.println("tearDown li");
+            manager.quitDriver();
+            System.out.println("tearDown li");
         }
     }
 }

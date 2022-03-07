@@ -7,13 +7,16 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.runewriters.pom.*;
+import org.runewriters.webdrivers.WebDriverFactory;
+import org.runewriters.webdrivers.model.WebDriverManager;
+import org.runewriters.webdrivers.model.WebDriverType;
 
 public class CheckoutOneStepdefs {
 
     private LoginPage loginPage;
-    private WebDriver webDriver;
+    private static WebDriverManager manager;
+    private static WebDriver webDriver;
     private InventoryPage inventory;
     private CartPage cartPage;
     private CheckoutOnePage checkoutOnePage;
@@ -22,7 +25,8 @@ public class CheckoutOneStepdefs {
 
     @Given("I am on the Checkout One page")
     public void iAmOnTheCheckoutOnePage() {
-        webDriver = new ChromeDriver();
+        manager = WebDriverFactory.getManager(WebDriverType.CHROME);
+        webDriver = manager.getDriver();
         webDriver.get("https://www.saucedemo.com");
 
         loginPage = new LoginPage(webDriver);
@@ -98,7 +102,7 @@ public class CheckoutOneStepdefs {
     @After
     public void tearDown(){
         if(webDriver != null){
-            webDriver.quit();
+            manager.quitDriver();
         System.out.println("tearDown co");
         }
     }
