@@ -144,9 +144,11 @@ Throughout the project we made use of multiple project management tools includin
 
 * GitHub, GitHub Desktop and Sourcetree for version control.
 * Trello for sprint and task management.
-* Microsoft Teams and Discord for collaborative working and meetings. Bellow is a commit graph showing the commit history of the project:
+* Microsoft Teams and Discord for collaborative working and meetings. 
 
-(MISSING COMMIT GRAPH GIF)
+Bellow is a commit graph showing the commit history of the project:
+
+![ezgif-2-7aac678c08](https://user-images.githubusercontent.com/98159233/156947577-7ea11d46-1e25-4334-ba63-ac536311608f.gif)
 
 We each branched off and worked on our separate tasks and would then merge together to update each of our branches with an up-to-date version of the project. On the last day of the project we branched off less and merged in more frequently to refactor,make final updates and fix bugs.
 
@@ -177,15 +179,23 @@ The framework processed different feature files. The results are displayed in th
 
 | Test Type         | Test Results |
 |-------------------|:------------:|
-| Login             |              |
-| Inventory         |              |
-| Cart              |              |
-| Checkout 1        |              |
-| Checkout 2        |              |
-| Checkout Complete |              |
-| Twitter           |              |
-| Facebook          |              |
-| LinkedIn          |              |
+| Login             | Passed       |
+| Inventory         | Passed       |
+| Cart              | Passed       |
+| Checkout 1        | Passed       |
+| Checkout 2        | Passed       |
+| Checkout Complete | Passed       |
+| Twitter           | Passed       |
+| Facebook          | Passed       |
+| LinkedIn          | Passed       |
+
+Feature Files Test Result:
+
+![BDD Test Results](https://media.discordapp.net/attachments/948513533979676692/950181576979918888/unknown.png?width=1124&height=676)
+
+**Note:** Other problematic users passed the tests due to the way it was tested against; for example, 
+a locked_out user was tested against not being logged in after entering its details rather than testing
+against if the user was taken to the home page.
 
 <br/>
 <div align="right">
