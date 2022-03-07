@@ -191,7 +191,7 @@ The framework processed different feature files. The results are displayed in th
 
 Feature Files Test Result:
 
-![BDD Test Results](https://cdn.discordapp.com/attachments/948513533979676692/950078575757885490/unknown.png)
+![BDD Test Results](https://media.discordapp.net/attachments/948513533979676692/950181576979918888/unknown.png?width=1124&height=676)
 
 **Note:** Other problematic users passed the tests due to the way it was tested against; for example, 
 a locked_out user was tested against not being logged in after entering its details rather than testing
