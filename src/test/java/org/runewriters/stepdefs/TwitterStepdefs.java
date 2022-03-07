@@ -6,22 +6,25 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeDriverService;
 import org.runewriters.pom.*;
+import org.runewriters.webdrivers.WebDriverFactory;
+import org.runewriters.webdrivers.model.WebDriverManager;
+import org.runewriters.webdrivers.model.WebDriverType;
+
 import java.time.Duration;
 import java.util.ArrayList;
 
 public class TwitterStepdefs {
 
-    private WebDriver webDriver;
-    private static ChromeDriverService service;
+    private static WebDriver webDriver;
+    private static WebDriverManager manager;
     private LoginPage loginPage;
     private InventoryPage inventoryPage;
 
     @Given("I am on the INVENTORY page")
     public void iAmOnTheINVENTORYPage() {
-        webDriver = new ChromeDriver();
+        manager = WebDriverFactory.getManager(WebDriverType.CHROME);
+        webDriver = manager.getDriver();
         webDriver.get("https://www.saucedemo.com");
 
         loginPage = new LoginPage(webDriver);
@@ -46,8 +49,8 @@ public class TwitterStepdefs {
     @After
     public void tearDown(){
         if(webDriver != null){
-        webDriver.quit();
-        System.out.println("tearDown tw");
+            manager.quitDriver();
+            System.out.println("tearDown tw");
         }
     }
 }
